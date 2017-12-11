@@ -1,0 +1,47 @@
+2016-09-26 13:14:05.0757|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2016-09-26 13:14:05.0757|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2016-09-26 13:14:05.0757|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:1028/api/cities/1/pointsofinterest/1  
+2016-09-26 13:14:05.2296|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 218.9628ms 200 
+2016-09-26 13:14:05.7009|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 711.7621ms 404 text/plain
+2016-09-26 13:14:05.9291|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/favicon.ico  
+2016-09-26 13:14:05.9391|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 12.2735ms 404 text/plain
+2016-09-26 13:14:06.1087|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2016-09-26 13:14:16.8705|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2016-09-26 13:14:16.8875|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 11059.7699ms
+2016-09-26 13:14:16.8975|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 11908.1864ms 204 
+2016-09-26 13:22:36.9739|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2016-09-26 13:22:36.9739|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2016-09-26 13:22:37.1440|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 209.3073ms 200 
+2016-09-26 13:22:37.5468|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 637.0661ms 404 text/plain
+2016-09-26 13:22:47.2616|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:1028/api/cities/1/pointsofinterest/1  
+2016-09-26 13:22:47.7234|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2016-09-26 13:22:47.7664|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2016-09-26 13:22:47.7849|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 373.6566ms
+2016-09-26 13:22:47.7849|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 534.8255ms 204 
+2016-09-26 13:39:22.3423|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2016-09-26 13:39:22.3423|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2016-09-26 13:39:22.5084|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 199.6197ms 200 
+2016-09-26 13:39:22.8834|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 609.4649ms 404 text/plain
+2016-09-26 13:39:31.8238|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:1028/api/cities/1/pointsofinterest/1  
+2016-09-26 13:39:32.1720|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2016-09-26 13:39:32.2210|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2016-09-26 13:39:32.2476|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 283.6914ms
+2016-09-26 13:39:32.2666|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 444.838ms 204 
+2016-09-26 13:49:03.2400|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2016-09-26 13:49:03.2400|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2016-09-26 13:49:03.4666|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 299.9419ms 200 
+2016-09-26 13:49:03.8709|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 729.7035ms 404 text/plain
+2016-09-26 13:49:24.8733|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:1028/api/cities/1/pointsofinterest/1  
+2016-09-26 13:49:25.2837|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2016-09-26 13:49:25.3337|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2016-09-26 13:49:25.3587|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 314.7341ms
+2016-09-26 13:49:25.3712|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 501.8278ms 204 
+2016-09-26 13:51:52.9124|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DEBUG http://localhost:1028/  0
+2016-09-26 13:51:52.9124|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:1028/  
+2016-09-26 13:51:53.0890|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 255.7782ms 200 
+2016-09-26 13:51:53.5093|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 698.4872ms 404 text/plain
+2016-09-26 13:51:56.0701|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 DELETE http://localhost:1028/api/cities/1/pointsofinterest/1  
+2016-09-26 13:51:56.4189|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) with arguments (1, 1) - ModelState is Valid
+2016-09-26 13:51:56.4674|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 204
+2016-09-26 13:51:56.4854|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CityInfo.API) in 281.1384ms
+2016-09-26 13:51:56.4854|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 428.143ms 204 

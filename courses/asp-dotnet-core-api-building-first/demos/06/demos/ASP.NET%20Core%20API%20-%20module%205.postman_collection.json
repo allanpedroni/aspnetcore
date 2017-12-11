@@ -1,0 +1,35 @@
+{
+	"id": "244acd6e-1461-f3c9-9091-a96eb9ede443",
+	"name": "ASP.NET Core API - module 5",
+	"description": "",
+	"order": [
+		"c4d77e03-f0cd-60fd-84a2-9fbc0dc4d280"
+	],
+	"folders": [],
+	"timestamp": 1466439690144,
+	"owner": "805617",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "c4d77e03-f0cd-60fd-84a2-9fbc0dc4d280",
+			"headers": "",
+			"url": "http://localhost:1028/api/testdatabase",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1475071515855,
+			"name": "Test database",
+			"description": "",
+			"collectionId": "244acd6e-1461-f3c9-9091-a96eb9ede443",
+			"responses": [],
+			"rawModeData": ""
+		}
+	]
+}
