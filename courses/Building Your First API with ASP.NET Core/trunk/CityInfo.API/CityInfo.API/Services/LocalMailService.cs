@@ -15,8 +15,8 @@ namespace CityInfo.API.Services
             _logger = logger;
         }
 
-        private string _mailTo = "allan.pedroni@gmail.com";
-        private string _mailFrom = "allan.pedroni@gmail.com";
+        private string _mailTo = Startup.Configuration["mailSettings:mailToAddress"];
+        private string _mailFrom = Startup.Configuration["mailSettings:mailFromAddress"];
 
         public void Send(string subject, string message)
         {
