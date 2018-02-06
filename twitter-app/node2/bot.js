@@ -23,23 +23,24 @@ T.get('account/verify_credentials', { skip_status: true })
         // See https://github.com/ttezel/twit#tgetpath-params-callback 
         // for details. 
 
-        console.log('data', result.data);
+        //console.log('data', result.data);
+        console.log('twitter is working fine!');
     })
 
 // 
 //  filter the twitter public stream by the word 'manga'. 
 //
-var stream = T.stream('statuses/filter', { track: 'manga' })
+//var stream = T.stream('statuses/filter', { track: 'manga' })
 
-stream.on('tweet', function (tweet) {
-    console.log(tweet)
-})
+// stream.on('tweet', function (tweet) {
+//     console.log(tweet)
+// })
 
 // 
 // filter the public stream by english tweets containing `#apple` 
 // 
-var stream = T.stream('statuses/filter', { track: '#apple', language: 'en' })
+//var stream = T.stream('statuses/filter', { track: '#apple', language: 'en' })
 
-stream.on('tweet', function (tweet) {
-    console.log(tweet)
-})
+// stream.on('tweet', function (tweet) {
+//     console.log(tweet)
+// })
