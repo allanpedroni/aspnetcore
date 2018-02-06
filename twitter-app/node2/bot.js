@@ -1,46 +1,78 @@
 var Twit = require('twit')
 
-var T = new Twit({
-    consumer_key:         'nBjOQb0X19JforIm7NrdwQnJQ',
-    consumer_secret:      'XO5PKdrYlo6SUshFD7IdGEbYRV4eLwQGGzzKu1vPpMzHCoXF9U',
-    access_token:         '1339082930-nSxFatE5BzuxW5LQipM0rpR0PBSnvcd9rICVmpc',
-    access_token_secret:  'ui88Ka6Yk6MY8ZUkfg0UMdw5bYqTaCk7bTl89XueU7Znj'
-    //,timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests. 
-})
+var config = require('./config');
 
-// T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-//     console.log(data)
-//     });
+var T = new Twit(config);
 
-T.get('account/verify_credentials', { skip_status: true })
-    .catch(function (err) {
-        console.log('caught error', err.stack)
-    })
-    .then(function (result) {
-        // `result` is an Object with keys "data" and "resp". 
-        // `data` and `resp` are the same objects as the ones passed 
-        // to the callback. 
-        // See https://github.com/ttezel/twit#tgetpath-params-callback 
-        // for details. 
 
-        //console.log('data', result.data);
-        console.log('twitter is working fine!');
-    })
 
-// 
-//  filter the twitter public stream by the word 'manga'. 
-//
-//var stream = T.stream('statuses/filter', { track: 'manga' })
+    // T.get('account/verify_credentials', { skip_status: true })
+    // .catch(function (err) {
+    //     console.log('caught error', err.stack)
+    // })
+    // .then(function (result) {
+    //     // `result` is an Object with keys "data" and "resp". 
+    //     // `data` and `resp` are the same objects as the ones passed 
+    //     // to the callback. 
+    //     // See https://github.com/ttezel/twit#tgetpath-params-callback 
+    //     // for details. 
 
-// stream.on('tweet', function (tweet) {
-//     console.log(tweet)
-// })
+    //     //console.log('data', result.data);
+    //     console.log('twitter is working fine!');
+    // })
 
-// 
-// filter the public stream by english tweets containing `#apple` 
-// 
-//var stream = T.stream('statuses/filter', { track: '#apple', language: 'en' })
+    // var params = {
+    //     q: 'AllanPedroni',
+    //     count: 1
+    // };
+    
+    // T.get('search/tweets', params, gotData);
 
-// stream.on('tweet', function (tweet) {
-//     console.log(tweet)
-// })
+    // function gotData(err, data, response)
+    // {
+    //     data.statuses.forEach(e => {
+    //         console.log(e.text);
+    //     });
+    // }
+
+    setInterval(tweetIt, 1000*5);
+
+function tweetIt()
+{
+    var r = Math.floor(Math.random()*100);
+
+    var tweet = {
+        status: 'hello world from node.js!' + r
+    }
+
+    T.post('statuses/update', tweet , tweeted);
+
+    function tweeted(err, data, response) {
+        if (err)
+            console.log('algo deu errado:' + err);
+        else
+            console.log('deu certo');
+    }
+}
+
+    // T.post('statuses/destroy/:id', { id: '961007634605363201' }, function (err, data, response) {
+    //     console.log(data)
+    // })
+
+    // 
+    //  filter the twitter public stream by the word 'manga'. 
+    //
+    //var stream = T.stream('statuses/filter', { track: 'manga' })
+
+    // stream.on('tweet', function (tweet) {
+    //     console.log(tweet)
+    // })
+
+    // 
+    // filter the public stream by english tweets containing `#apple` 
+    // 
+    //var stream = T.stream('statuses/filter', { track: '#apple', language: 'en' })
+
+    // stream.on('tweet', function (tweet) {
+    //     console.log(tweet)
+    // })
