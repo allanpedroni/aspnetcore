@@ -1,9 +1,12 @@
 var Twit = require('twit')
-
+var jsonfile = require('jsonfile')
 var config = require('./config');
+//var tt = require('fs');
+
+
+var file = '/Estudo/aspnetcore/data.json'
 
 var T = new Twit(config);
-
 
 
     // T.get('account/verify_credentials', { skip_status: true })
@@ -60,11 +63,21 @@ var T = new Twit(config);
     s.on('tweet', tweet)
 
     function tweet(e){
-        console.log("it works!");
-        var name = e.source.name;
-        var sn = e.source.screen_name;
-        console.log(sn);
+        console.log(e.text + ' - ' + e.user.screen_name);
+        
+        //var name = e.source.name;
+        //var sn = e.source.screen_name;
+        //console.log(sn);
+        jsonfile.writeFileSync(file, e, {flag: 'a'});
     }
+    
+    //var obj = {name: 'JP'}
+    
+    
+
+    // jsonfile.writeFile(file, obj, function (err) {
+    //   console.error(err)
+    // })
 
     // T.post('statuses/destroy/:id', { id: '961007634605363201' }, function (err, data, response) {
     //     console.log(data)
