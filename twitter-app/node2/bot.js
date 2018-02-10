@@ -35,25 +35,36 @@ var T = new Twit(config);
     //     });
     // }
 
-    setInterval(tweetIt, 1000*5);
+    //setInterval(tweetIt, 1000*5);
 
-function tweetIt()
-{
-    var r = Math.floor(Math.random()*100);
+    function tweetIt()
+    {
+        var r = Math.floor(Math.random()*100);
 
-    var tweet = {
-        status: 'hello world from node.js!' + r
+        var tweet = {
+            status: 'hello world from node.js!' + r
+        }
+
+        T.post('statuses/update', tweet , tweeted);
+
+        function tweeted(err, data, response) {
+            if (err)
+                console.log('algo deu errado:' + err);
+            else
+                console.log('deu certo');
+        }
     }
 
-    T.post('statuses/update', tweet , tweeted);
+    var s = T.stream('statuses/filter', {track: 'manga'})
 
-    function tweeted(err, data, response) {
-        if (err)
-            console.log('algo deu errado:' + err);
-        else
-            console.log('deu certo');
+    s.on('tweet', tweet)
+
+    function tweet(e){
+        console.log("it works!");
+        var name = e.source.name;
+        var sn = e.source.screen_name;
+        console.log(sn);
     }
-}
 
     // T.post('statuses/destroy/:id', { id: '961007634605363201' }, function (err, data, response) {
     //     console.log(data)
