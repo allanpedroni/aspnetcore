@@ -5782,7 +5782,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+      "sha512": "sJOvXQ4rafH7AmWBv1eOdk1bEviFKgUccon1diCB8q+KlX19uYjmVOOmambzN8s41Gim/9ajw6uZWA5c7rxZDg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "files": [
@@ -7558,7 +7558,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
+      "sha512": "hWcyMDvrLI4+oS1w3Eb/QJQIXs2a3aNmFcw3szl9/AJl6R/6d7+UMkKsyYMCatzb3QtOgGbBYAskgJPZrYSYZw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -9594,7 +9594,7 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "i1qtJth0kqATgB4fEg2d4SI6iSJpN1ITebpIMFWLPZOExyGQTKMHqmZ93a98Y0f5EOR6Tz1/Pu6ITcvI9gfSkQ==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
@@ -12361,7 +12361,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.0.11": {
-      "sha512": "FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
+      "sha512": "d8Y2ahqG8zA+PZ8HGzD1fDlyLHbDB69FO/CFXVzjB/AFUXgL46xUnd0orhfu+pFIY0o8YlmKzEnQCaRab+yrFw==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.0.11",
       "files": [
@@ -12533,34 +12533,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kevin\\.nuget\\packages\\": {},
+    "C:\\Users\\allan.pedroni\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Pluralsight\\asp-dotnet-core-api-building-first_updated\\asp-dotnet-core-api-building-first-m1\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\CityInfo.API.csproj",
+      "projectUniqueName": "f:\\Area Testes\\GITHub\\aspnetcore\\courses\\course-02\\demos\\02\\demos\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\CityInfo.API.csproj",
       "projectName": "CityInfo.API",
-      "projectPath": "C:\\Pluralsight\\asp-dotnet-core-api-building-first_updated\\asp-dotnet-core-api-building-first-m1\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\CityInfo.API.csproj",
-      "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Pluralsight\\asp-dotnet-core-api-building-first_updated\\asp-dotnet-core-api-building-first-m1\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\obj\\",
+      "projectPath": "f:\\Area Testes\\GITHub\\aspnetcore\\courses\\course-02\\demos\\02\\demos\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\CityInfo.API.csproj",
+      "packagesPath": "C:\\Users\\allan.pedroni\\.nuget\\packages\\",
+      "outputPath": "f:\\Area Testes\\GITHub\\aspnetcore\\courses\\course-02\\demos\\02\\demos\\vs2017_core2\\end\\CityInfo\\src\\CityInfo.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\allan.pedroni\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://srvm799:8080/tfs/antt/_packaging/FrameworkANTT/nuget/v2/": {},
+        "http://www.squadra.com.br/antt/nexus/service/local/nuget/feed/": {},
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
@@ -12576,14 +12573,14 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
           }
         },
         "imports": [

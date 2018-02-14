@@ -3,8 +3,7 @@ var jsonfile = require('jsonfile')
 var config = require('./config');
 //var tt = require('fs');
 
-
-var file = '/Estudo/aspnetcore/data.json'
+var file = '/aspnetcore/twitter-app/db/data.json'
 
 var T = new Twit(config);
 
