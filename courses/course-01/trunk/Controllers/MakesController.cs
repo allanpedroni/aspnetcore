@@ -15,12 +15,14 @@ namespace trunk.Controllers
         private readonly AppDbContext context;
         private readonly IMapper mapper;
         private readonly ILogger<MakesController> _logger;
+        
         public MakesController(AppDbContext context, IMapper mapper, ILogger<MakesController> logger)
         {
             this._logger = logger;
             this.mapper = mapper;
             this.context = context;
         }
+
         [HttpGet("/api/makes")]
         public async Task<IEnumerable<MakeResource>> GetMakes()
         {
