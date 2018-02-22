@@ -19,6 +19,9 @@ namespace trunk
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                //.CaptureStartupErrors(true)
+                // THE ABOVE LINE IS FOR THE STARTUP RELATED ISSUES
+                .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
                 .UseStartup<Startup>()
                 .Build();
     }
