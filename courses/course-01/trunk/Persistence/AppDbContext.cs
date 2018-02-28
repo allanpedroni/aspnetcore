@@ -19,7 +19,7 @@ namespace trunk.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<VehicleFeature>()
-                .HasKey(hk => new { hk.FeatureId, hk.VechileId});
+                .HasKey(hk => new { hk.FeatureId, hk.VehicleId});
         }
     }
 }
