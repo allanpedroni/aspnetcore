@@ -1,0 +1,133 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Curso",
+		"_postman_id": "05d66ac0-659e-6ee3-7802-548d9ed0fcd8",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post vehicles with Wrong Resource",
+			"request": {
+				"url": "http://localhost:51633/api/vehicles",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 0\n\t\"modelId\": 1,\n\t\"model\": null,\n\t\"isRegistered\": false,\n\t\"contactName\": \"name\",\n\t\"contactEmail\": \"allan.pedronI@squadra.com.br\"\n\t\"contactPhone\": \"31 98874-3251\"\n\t\"LastUpdate\": \"2018-01-01T00:00:00\",\n\t\"features\": \n\t[\n\t\t{ \n\t\t\t\"vechileId\" : 0,\n\t\t\t\"featureId\": 1 ,\n\t\t\t\"vehicle\" : null,\n\t\t\t\"feature\" : null\n\t\t},\n\t\t{ \"featureId\": 2 },\n\t\t{ \"featureId\": 3 }\n\t]\n}"
+				},
+				"description": "http://localhost:51633/vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Post vehicles with Resource",
+			"request": {
+				"url": "http://localhost:51633/api/vehicles",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tmodelId : 1,\n\tisRegistered: true,\n\tcontact: {\n\t\tname: 'testando 4',\n\t\temail: 'testando@squadra.com.br',\n\t\tphone: '31 99999-9999'\n\t},\n\tlastUpdate: '2018-02-02',\n\tfeatures: [1]\n}"
+				},
+				"description": "http://localhost:51633/vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Get makes",
+			"request": {
+				"url": "http://localhost:51633/api/makes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:51633/api/makes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get features",
+			"request": {
+				"url": "http://localhost:51633/api/features",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:51633/api/features"
+			},
+			"response": []
+		},
+		{
+			"name": "Put vehicles with Resource",
+			"request": {
+				"url": "http://localhost:51633/api/vehicles/9",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tmodelId : 1,\n\tisRegistered: false,\n\tcontact: {\n\t\tname: 'testando 4',\n\t\temail: 'testando@squadra.com.br',\n\t\tphone: '31 99999-9999'\n\t},\n\tlastUpdate: '2018-02-02',\n\tfeatures: [1]\n}"
+				},
+				"description": "http://localhost:51633/vehicles/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete vehicles",
+			"request": {
+				"url": "http://localhost:51633/api/vehicles/9",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tmodelId : 1,\n\tisRegistered: false,\n\tcontact: {\n\t\tname: 'testando 4',\n\t\temail: 'testando@squadra.com.br',\n\t\tphone: '31 99999-9999'\n\t},\n\tlastUpdate: '2018-02-02',\n\tfeatures: [1]\n}"
+				},
+				"description": "http://localhost:51633/vehicles/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get vehicles",
+			"request": {
+				"url": "http://localhost:51633/api/vehicles/100",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\tmodelId : 1,\n\tisRegistered: false,\n\tcontact: {\n\t\tname: 'testando 4',\n\t\temail: 'testando@squadra.com.br',\n\t\tphone: '31 99999-9999'\n\t},\n\tlastUpdate: '2018-02-02',\n\tfeatures: [1]\n}"
+				},
+				"description": "http://localhost:51633/vehicles/{id}"
+			},
+			"response": []
+		}
+	]
+}
