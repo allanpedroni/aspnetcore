@@ -114,6 +114,18 @@ namespace trunk.Controllers
             return Ok(id);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetVehicle(int id)
+        {
+            var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
+
+            if (vehicle == null)
+                return NotFound();
+
+            var vehicleResource = mapper.Map<Vehicle, VehicleResource>(vehicle);
+
+            return Ok(vehicleResource);
+        }
         // [HttpPost]
         // public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         // {
