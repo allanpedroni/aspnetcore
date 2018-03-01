@@ -100,6 +100,20 @@ namespace trunk.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteVehicle(int id)
+        {
+            var vehicle = await context.Vehicles.FindAsync(id);
+
+            if (vehicle == null)
+                return NotFound();
+
+            context.Remove(vehicle);
+            await context.SaveChangesAsync();
+
+            return Ok(id);
+        }
+
         // [HttpPost]
         // public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         // {
