@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicle-form.component.css']
 })
 export class VehicleFormComponent implements OnInit {
-   makes: any[] = [];
-   vehicle: any ={};
+   makes: any[] = [];   
    models: any[] = [];
    features: any[] = [];
+   vehicle: any ={
+    features: [],
+    contact: {}
+   };
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -22,8 +25,28 @@ export class VehicleFormComponent implements OnInit {
       this.features = m; });//console.log('todos makes do banco', this.makes); 
   }
 
-  onMakeChange(){
-    var selectedMake = this.makes.find(m => m.id == this.vehicle.make); //console.log("this.vehicle.make", this.vehicle.make);
+  onMakeChange() {
+    var selectedMake = this.makes.find(m => m.id == this.vehicle.makeId); //console.log("this.vehicle.make", this.vehicle.makeId);
     this.models = selectedMake ? selectedMake.models : []; //console.log("selectedMake", selectedMake);
+    delete this.vehicle.modelId; //when changing make, delete the selected model option
+  }
+  onFeatureToggle(featureId: any, $event : any) {
+    if ($event.target.checked)
+      this.vehicle.features.push(featureId);
+    else{
+      var index = this.vehicle.features.indexOf(featureId);
+      this.vehicle.features.splice(index,1);
+    }
+  }
+
+  submit() {
+    this.vehicleService.create(this.vehicle)
+      .subscribe(
+        x => console.log(x),
+        err => {
+          if (err.status == 400){
+            
+          }
+        });
   }
 }
