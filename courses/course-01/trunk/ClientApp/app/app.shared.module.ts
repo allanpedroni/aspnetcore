@@ -1,3 +1,6 @@
+import { AppErrorHandler } from './app.error-handle';
+import { ErrorHandler } from '@angular/core';
+import { ToastyModule } from 'ng2-toasty';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -26,6 +29,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         CommonModule,
         HttpModule,
         FormsModule,
+        ToastyModule.forRoot(),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent},
@@ -36,6 +40,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
         ])
     ],
     providers: [
+        { provide: ErrorHandler, useClass: AppErrorHandler }, //wherever it needs create ErrorHandler it will create custom AppErrorHandler
         VehicleService
     ]
 })
