@@ -1,6 +1,6 @@
-import { NavMenuComponent } from './../components/navmenu/navmenu.component';
+import { SaveVehicle } from '../model/vehicle';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions } from '@angular/http'
+import { Http } from '@angular/http'
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -20,8 +20,23 @@ export class VehicleService {
       .map(res => res.json());
   }
 
-  create(vehicle : any){
+  create(vehicle : any) {
     return this.http.post('/api/vehicles', vehicle)
+      .map(res => res.json());
+  }
+
+  getVehicle(id : any) {
+    return this.http.get('/api/vehicles/' + id)
+      .map(res => res.json());
+  }
+
+  update(vehicle: SaveVehicle) {
+    return this.http.put('/api/vehicles/' + vehicle.id, vehicle)
+      .map(res => res.json());
+  }
+
+  delete(id: any) {
+    return this.http.delete('/api/vehicles/' + id)
       .map(res => res.json());
   }
 }

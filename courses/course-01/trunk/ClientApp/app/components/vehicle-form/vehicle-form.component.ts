@@ -1,6 +1,7 @@
 import { ToastyService } from 'ng2-toasty';
 import { VehicleService } from './../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -13,14 +14,27 @@ export class VehicleFormComponent implements OnInit {
    features: any[] = [];
    vehicle: any ={
     features: [],
-    contact: {}
+    contact: {} 
    };
 
   constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
     private vehicleService: VehicleService,
-    private toastyService: ToastyService) { }
+    private toastyService: ToastyService) { 
+
+      route.params.subscribe(p => {
+        this.vehicle.id = +p['id']; //+ = convert to a number
+      });
+
+    }
 
   ngOnInit() {
+
+    console.log(this.vehicle.id || 0)
+    //this.vehicleService.getVehicle(this.vehicle.id).subscribe(v => {
+    //  this.vehicle = v;  });
+
     this.vehicleService.getMakes().subscribe(m => {
       this.makes = m;  }); //console.log('todos makes do banco', this.makes);
     
@@ -52,7 +66,7 @@ export class VehicleFormComponent implements OnInit {
         //   //   msg: 'vehicleService.create.',
         //   //   showClose: true,
         //   //   timeout: 5000,
-        //   //   theme: 'bootstrap'
+        //   //   theme: 'material'
         //   // });
         // });
   }

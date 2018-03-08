@@ -5930,7 +5930,6 @@
         "are-we-there-yet": {
           "version": "1.1.4",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "delegates": "1.0.0",
@@ -5969,7 +5968,6 @@
         "bcrypt-pbkdf": {
           "version": "1.0.1",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "tweetnacl": "0.14.5"
@@ -6210,7 +6208,6 @@
         "hawk": {
           "version": "3.1.3",
           "bundled": true,
-          "dev": true,
           "requires": {
             "boom": "2.10.1",
             "cryptiles": "2.0.5",
@@ -6225,7 +6222,6 @@
         "http-signature": {
           "version": "1.1.1",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "assert-plus": "0.2.0",
@@ -6282,7 +6278,8 @@
         },
         "jsbn": {
           "version": "0.1.1",
-          "bundled": true
+          "bundled": true,
+          "optional": true
         },
         "json-schema": {
           "version": "0.2.3",
@@ -6310,7 +6307,6 @@
         "jsprim": {
           "version": "1.4.0",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "assert-plus": "1.0.0",
@@ -6388,7 +6384,6 @@
         "nopt": {
           "version": "4.0.1",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "abbrev": "1.1.0",
@@ -6445,7 +6440,6 @@
         "osenv": {
           "version": "0.1.4",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "os-homedir": "1.0.2",
@@ -6454,36 +6448,30 @@
         },
         "path-is-absolute": {
           "version": "1.0.1",
-          "bundled": true,
-          "dev": true
+          "bundled": true
         },
         "performance-now": {
           "version": "0.2.0",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "process-nextick-args": {
           "version": "1.0.7",
-          "bundled": true,
-          "dev": true
+          "bundled": true
         },
         "punycode": {
           "version": "1.4.1",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "qs": {
           "version": "6.4.0",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "rc": {
           "version": "1.2.1",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "deep-extend": "0.4.2",
@@ -6495,7 +6483,6 @@
             "minimist": {
               "version": "1.2.0",
               "bundled": true,
-              "dev": true,
               "optional": true
             }
           }
@@ -6503,7 +6490,6 @@
         "readable-stream": {
           "version": "2.2.9",
           "bundled": true,
-          "dev": true,
           "requires": {
             "buffer-shims": "1.0.0",
             "core-util-is": "1.0.2",
@@ -6517,7 +6503,6 @@
         "request": {
           "version": "2.81.0",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "aws-sign2": "0.6.0",
@@ -6553,31 +6538,26 @@
         },
         "safe-buffer": {
           "version": "5.0.1",
-          "bundled": true,
-          "dev": true
+          "bundled": true
         },
         "semver": {
           "version": "5.3.0",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "set-blocking": {
           "version": "2.0.0",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "signal-exit": {
           "version": "3.0.2",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "sntp": {
           "version": "1.0.9",
           "bundled": true,
-          "dev": true,
           "requires": {
             "hoek": "2.16.3"
           }
@@ -6585,7 +6565,6 @@
         "sshpk": {
           "version": "1.13.0",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "asn1": "0.2.3",
@@ -6602,7 +6581,6 @@
             "assert-plus": {
               "version": "1.0.0",
               "bundled": true,
-              "dev": true,
               "optional": true
             }
           }
@@ -6610,7 +6588,6 @@
         "string-width": {
           "version": "1.0.2",
           "bundled": true,
-          "dev": true,
           "requires": {
             "code-point-at": "1.1.0",
             "is-fullwidth-code-point": "1.0.0",
@@ -6620,7 +6597,6 @@
         "string_decoder": {
           "version": "1.0.1",
           "bundled": true,
-          "dev": true,
           "requires": {
             "safe-buffer": "5.0.1"
           }
@@ -6628,13 +6604,11 @@
         "stringstream": {
           "version": "0.0.5",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "strip-ansi": {
           "version": "3.0.1",
           "bundled": true,
-          "dev": true,
           "requires": {
             "ansi-regex": "2.1.1"
           }
@@ -6642,7 +6616,6 @@
         "strip-json-comments": {
           "version": "2.0.1",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "tar": {
@@ -6672,7 +6645,6 @@
         "tough-cookie": {
           "version": "2.3.2",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "punycode": "1.4.1"
@@ -6681,7 +6653,6 @@
         "tunnel-agent": {
           "version": "0.6.0",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "safe-buffer": "5.0.1"
@@ -6690,30 +6661,25 @@
         "tweetnacl": {
           "version": "0.14.5",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "uid-number": {
           "version": "0.0.6",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "util-deprecate": {
           "version": "1.0.2",
-          "bundled": true,
-          "dev": true
+          "bundled": true
         },
         "uuid": {
           "version": "3.0.1",
           "bundled": true,
-          "dev": true,
           "optional": true
         },
         "verror": {
           "version": "1.3.6",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "extsprintf": "1.0.2"
@@ -6722,7 +6688,6 @@
         "wide-align": {
           "version": "1.1.2",
           "bundled": true,
-          "dev": true,
           "optional": true,
           "requires": {
             "string-width": "1.0.2"
@@ -12096,6 +12061,11 @@
       "resolved": "https://registry.npmjs.org/range-parser/-/range-parser-1.2.0.tgz",
       "integrity": "sha1-9JvmtIeJTdxA3MlKMi9hEJLgDV4=",
       "dev": true
+    },
+    "raven-js": {
+      "version": "3.23.1",
+      "resolved": "https://registry.npmjs.org/raven-js/-/raven-js-3.23.1.tgz",
+      "integrity": "sha512-cfkGRgz1TkFmEM5ahPWkIEav2+3zr32qMaBvKizzxN7fZapLbCrxMHMLDn7LSVGN0+dyPKY18imv3i0dkLRoKg=="
     },
     "raw-body": {
       "version": "2.2.0",

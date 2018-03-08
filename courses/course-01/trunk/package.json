@@ -63,6 +63,7 @@
   "dependencies": {
     "ng2-toasty": "^4.0.3",
     "node-chartist": "^1.0.5",
+    "raven-js": "^3.23.1",
     "webpack": "^2.5.1"
   }
 }

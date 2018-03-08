@@ -1,35 +1,34 @@
-import { Inject } from '@angular/core';
-import { ToastyService } from 'ng2-toasty';
-import { ErrorHandler } from '@angular/core';
+import * as Raven from 'raven-js';
+import { ToastyService, ToastyConfig } from 'ng2-toasty';
+import { ErrorHandler, Inject, NgZone, isDevMode } from '@angular/core';
 
 export class AppErrorHandler implements ErrorHandler {
 
-    //tell the angular to inject an instance of ToastyService using @Inject(ToastyService)
-    constructor(@Inject(ToastyService) private toastyService: ToastyService) { }
-
-    // handleError(error: any): void {
-    //     this.toastyService.error({
-    //             title: 'Error happens',
-    //             msg: 'vehicleService.create.',
-    //             showClose: true,
-    //             timeout: 1000,
-    //             theme: 'bootstrap'
-    //     });
-    // }
-
-    handleError(error: any): void {
-        //console.log(window);
-        //if (typeof(window) !== 'undefined') {
-            //NOT WORKING AS EXPECTED. WHEN I CLICK TO SAVE BUTTON
-            this.toastyService.error({
-                title: 'Error',
-                msg: 'An unexpected error happened',
-                theme: 'bootstrap',
-                showClose: true,
-                timeout: 1000
-            });
-            console.log(this.toastyService);
-        //}
+    constructor(
+        
+        @Inject(NgZone) private ngZone: NgZone,
+        @Inject(ToastyService) private toastyService: ToastyService,
+        @Inject(ToastyConfig) private toastyConfig: ToastyConfig) {
+            //default options
+            this.toastyConfig.theme = 'bootstrap';
+            this.toastyConfig.position = 'top-right';
+            this.toastyConfig.timeout = 3000;
+            this.toastyConfig.showClose = true;
     }
 
+    handleError(error: any): void {
+
+        Raven.captureException(error.originalError || error);
+
+        //if (typeof(window) !== 'undefined') {
+
+            this.ngZone.run(() => {
+                //this.toastyService.clearAll();
+                this.toastyService.error({
+                    title: 'Error',
+                    msg: 'An unexpected error happened. Lets see what happens: ' + (error.originalError || error)
+                });
+            })
+        //}
+    }
 }
