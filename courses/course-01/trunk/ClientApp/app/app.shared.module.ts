@@ -31,13 +31,13 @@ Raven
     ],
     imports: [
         CommonModule,
-        HttpModule,
         FormsModule,
+        HttpModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent},
-            { path: 'vehicles/:id', component: VehicleFormComponent},
+            { path: 'vehicles/:id', component: VehicleFormComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -46,7 +46,6 @@ Raven
     ],
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler }, 
-        //{ provide: "ORIGIN_URL", useValue: "http://localhost:51633" },
         VehicleService
     ],
     exports: [ToastyModule],

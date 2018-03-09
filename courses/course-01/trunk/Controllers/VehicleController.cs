@@ -30,8 +30,6 @@ namespace trunk.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
-            throw new Exception("forced error in CreateVehicle on VehicleController");
-
             logger.LogInformation(1000, "ModelState.IsValid: {0}", ModelState.IsValid.ToString());
 
             //input validation using data annotations

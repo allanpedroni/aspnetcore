@@ -18,3 +18,6 @@ Used for read the route parameters - component
 
 #using Router
 Use this to navigate the user to a different page.
+
+#Using Observable
+We can send multiple requests in parallel and subscribe to the result when all there observables are complete.

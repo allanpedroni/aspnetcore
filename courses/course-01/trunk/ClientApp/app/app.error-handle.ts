@@ -18,9 +18,10 @@ export class AppErrorHandler implements ErrorHandler {
 
     handleError(error: any): void {
 
-        Raven.captureException(error.originalError || error);
+        if (isDevMode() == false)
+            Raven.captureException(error.originalError || error);
 
-        //if (typeof(window) !== 'undefined') {
+        if (typeof(window) !== 'undefined') {
 
             this.ngZone.run(() => {
                 //this.toastyService.clearAll();
@@ -29,6 +30,8 @@ export class AppErrorHandler implements ErrorHandler {
                     msg: 'An unexpected error happened. Lets see what happens: ' + (error.originalError || error)
                 });
             })
-        //}
+        }
+        else
+            console.log('there is no window object...');
     }
 }
