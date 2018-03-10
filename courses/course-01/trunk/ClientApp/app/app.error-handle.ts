@@ -18,8 +18,8 @@ export class AppErrorHandler implements ErrorHandler {
 
     handleError(error: any): void {
 
-        if (isDevMode() == false)
-            Raven.captureException(error.originalError || error);
+        // if (isDevMode() == false)
+        //     Raven.captureException(error.originalError || error);
 
         if (typeof(window) !== 'undefined') {
 

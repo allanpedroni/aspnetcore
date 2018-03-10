@@ -7,6 +7,7 @@ using trunk.Core.Models;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using trunk.Core;
+using System.Collections.Generic;
 
 namespace trunk.Controllers
 {
@@ -133,5 +134,24 @@ namespace trunk.Controllers
 
             return Ok(vehicleResource);
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<VehicleResource>> GetVehicles(FilterResource filterResource)
+        {
+            var filter = mapper.Map<FilterResource, Filter>(filterResource);
+
+            var vehicle = await repository.GetVehicles(filter);
+
+            return  mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(vehicle);
+        }
+
+        // [HttpGet]
+        // public async Task<QueryResultResource<VehicleResource>> GetVehicles(VehicleQueryResource filterResource)
+        // {
+        // var filter = mapper.Map<VehicleQueryResource, VehicleQuery>(filterResource);
+        // var queryResult = await repository.GetVehicles(filter);
+
+        // return mapper.Map<QueryResult<Vehicle>, QueryResultResource<VehicleResource>>(queryResult);
+        // }
     }
 }

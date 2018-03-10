@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using trunk.Core.Models;
 
 namespace trunk.Core
@@ -11,5 +12,6 @@ namespace trunk.Core
 
         void Remove(Vehicle vehicle);
 
+        Task<IEnumerable<Vehicle>> GetVehicles(Filter filter);
     }
 }

@@ -14,7 +14,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component'
+import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list'
 
 Raven
     .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
@@ -27,7 +28,8 @@ Raven
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        VehicleFormComponent
+        VehicleFormComponent,
+        VehicleListComponent
     ],
     imports: [
         CommonModule,
@@ -35,9 +37,10 @@ Raven
         HttpModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'vehicles/new', component: VehicleFormComponent},
+            { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
+            { path: 'vehicles/new', component: VehicleFormComponent },
             { path: 'vehicles/:id', component: VehicleFormComponent },
+            { path: 'vehicles', component: VehicleListComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -45,11 +48,12 @@ Raven
         ])        
     ],
     providers: [
-        { provide: ErrorHandler, useClass: AppErrorHandler }, 
+        //wherever it needs create ErrorHandler it will create custom AppErrorHandler
+        { provide: ErrorHandler, useClass: AppErrorHandler },  
         VehicleService
     ],
     exports: [ToastyModule],
-    //wherever it needs create ErrorHandler it will create custom AppErrorHandler
+    
 })
 export class AppModuleShared {
 }

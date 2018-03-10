@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using trunk.Core;
 using trunk.Core.Models;
@@ -20,10 +22,8 @@ namespace trunk.Persistence.Repository
                 return await context.Vehicles.FindAsync(id);
 
             return await context.Vehicles
-                .Include(v => v.Features)
-                .ThenInclude(vf => vf.Feature)
-                .Include(v => v.Model)
-                .ThenInclude(vf => vf.Make)
+                .Include(v => v.Features).ThenInclude(vf => vf.Feature)
+                .Include(v => v.Model).ThenInclude(vf => vf.Make)
                 .SingleOrDefaultAsync(v => v.Id == id);
         }
 
@@ -35,6 +35,19 @@ namespace trunk.Persistence.Repository
         public void Remove(Vehicle vehicle)
         {
             context.Vehicles.Remove(vehicle);
+        }
+        
+        public async Task<IEnumerable<Vehicle>> GetVehicles(Filter filter)
+        {
+            var query = context.Vehicles
+                .Include(v => v.Features).ThenInclude(vf => vf.Feature)
+                .Include(v => v.Model).ThenInclude(vf => vf.Make)
+                .AsQueryable();
+
+            if (filter.MakeId.HasValue)
+                query = query.Where(w => w.Model.MakeId == filter.MakeId.Value);
+
+            return await query.ToListAsync();
         }
     }
 }
