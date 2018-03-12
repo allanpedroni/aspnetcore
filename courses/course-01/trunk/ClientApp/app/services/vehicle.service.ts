@@ -43,7 +43,7 @@ export class VehicleService {
   }
 
   getVehicles(filter: any) {
-    return this.http.get(this.vehiclesEndpoint + '?' + this.toQueryString(filter))
+    return this.http.get(this.vehiclesEndpoint + this.toQueryString(filter))
       .map(res => res.json());
   }
 
@@ -55,8 +55,8 @@ export class VehicleService {
         parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
     }
 
-    console.log('toQueryString: ' + parts.join('&'));
-
-    return parts.join('&');
+    if (parts.join('&').length > 0)
+      return '?' + parts.join('&');
+    return '';
   }
 }

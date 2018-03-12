@@ -9,14 +9,19 @@ export class VehicleListComponent implements OnInit {
   private readonly PAGE_SIZE = 3;
 
   queryResult: any = {};
-  makes: any[] = [];
+  makes: KeyValuePair[] = [];
   query: any = {
-    page: 1,
-    pageSize: this.PAGE_SIZE,
-    makeId: 0
+    pageSize: this.PAGE_SIZE
   };
   vehicles: Vehicle[] = [];
-  filter: any = {};
+  
+  columns = [
+    { title: 'Id' },
+    { title: 'Contact Name', key: 'contactName', isSortable: true },
+    { title: 'Make', key: 'make', isSortable: true },
+    { title: 'Model', key: 'model', isSortable: true },
+    { }
+  ];
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -28,7 +33,7 @@ export class VehicleListComponent implements OnInit {
   }
 
   private populateVehicles() {
-    this.vehicleService.getVehicles(this.filter)
+    this.vehicleService.getVehicles(this.query)
       .subscribe(result => this.vehicles = result);
   }
 
@@ -38,12 +43,20 @@ export class VehicleListComponent implements OnInit {
   }
 
   resetFilter() {
-    this.filter = {};
     this.query = {
       page: 1,
-      makeId: 0,
       pageSize: this.PAGE_SIZE
     };
+    this.populateVehicles();
+  }
+
+  sortBy(columnName : any) {
+    if (this.query.sortBy === columnName) {
+      this.query.isSortAscending = !this.query.isSortAscending; 
+    } else {
+      this.query.sortBy = columnName;
+      this.query.isSortAscending = true;
+    }
     this.populateVehicles();
   }
 }
