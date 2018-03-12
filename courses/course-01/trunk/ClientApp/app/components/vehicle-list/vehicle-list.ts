@@ -11,7 +11,10 @@ export class VehicleListComponent implements OnInit {
   queryResult: any = {};
   makes: KeyValuePair[] = [];
   query: any = {
-    pageSize: this.PAGE_SIZE
+    sortBy: '',
+    pageSize: this.PAGE_SIZE,
+    page: 1,
+    isSortAscending: false
   };
   vehicles: Vehicle[] = [];
   
