@@ -11,10 +11,12 @@ export class VehicleListComponent implements OnInit {
   queryResult: any = {};
   makes: any[] = [];
   query: any = {
+    page: 1,
     pageSize: this.PAGE_SIZE,
     makeId: 0
   };
   vehicles: Vehicle[] = [];
+  filter: any = {};
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -26,8 +28,8 @@ export class VehicleListComponent implements OnInit {
   }
 
   private populateVehicles() {
-    this.vehicleService.getVehicles()
-      .subscribe(v => this.vehicles = v);
+    this.vehicleService.getVehicles(this.filter)
+      .subscribe(result => this.vehicles = result);
   }
 
   onFilterChange() {
@@ -36,6 +38,7 @@ export class VehicleListComponent implements OnInit {
   }
 
   resetFilter() {
+    this.filter = {};
     this.query = {
       page: 1,
       makeId: 0,

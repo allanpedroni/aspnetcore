@@ -16,13 +16,13 @@ namespace trunk.Migrations
             migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model B',1)");
             migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model C',1)");
 
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model A',2)");
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model B',2)");
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model C',2)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model A',2)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model B',2)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model C',2)");
 
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model A',3)");
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model B',3)");
-            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make1-Model C',3)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model A',3)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model B',3)");
+            migrationBuilder.Sql("INSERT INTO Models (Name, MakeID) VALUES('Make2-Model C',3)");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

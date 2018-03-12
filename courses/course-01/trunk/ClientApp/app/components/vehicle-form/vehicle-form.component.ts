@@ -132,4 +132,8 @@ export class VehicleFormComponent implements OnInit {
         });
     }
   }
+
+  navigateBack() {
+    this.router.navigate(['/vehicles']);
+  }
 }
