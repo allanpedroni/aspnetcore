@@ -66,6 +66,23 @@ namespace trunk.Migrations
                     b.ToTable("Models");
                 });
 
+            modelBuilder.Entity("trunk.Core.Models.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FileName")
+                        .HasMaxLength(255);
+
+                    b.Property<int?>("VehicleId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Photos");
+                });
+
             modelBuilder.Entity("trunk.Core.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -114,6 +131,13 @@ namespace trunk.Migrations
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("trunk.Core.Models.Photo", b =>
+                {
+                    b.HasOne("trunk.Core.Models.Vehicle")
+                        .WithMany("Photos")
+                        .HasForeignKey("VehicleId");
                 });
 
             modelBuilder.Entity("trunk.Core.Models.Vehicle", b =>
