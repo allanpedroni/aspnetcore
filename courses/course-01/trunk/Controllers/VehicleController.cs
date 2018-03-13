@@ -136,13 +136,13 @@ namespace trunk.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<VehicleResource>> GetVehicles(VehicleQueryResource filterResource)
+        public async Task<QueryResultResource<VehicleResource>> GetVehicles(VehicleQueryResource filterResource)
         {
             var filter = mapper.Map<VehicleQueryResource, VehicleQuery>(filterResource);
 
             var vehicle = await repository.GetVehicles(filter);
 
-            return  mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(vehicle);
+            return  mapper.Map<QueryResult<Vehicle>, QueryResultResource<VehicleResource>>(vehicle);
         }
 
         // [HttpGet]

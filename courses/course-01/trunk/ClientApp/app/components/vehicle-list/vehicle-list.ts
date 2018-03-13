@@ -37,7 +37,7 @@ export class VehicleListComponent implements OnInit {
 
   private populateVehicles() {
     this.vehicleService.getVehicles(this.query)
-      .subscribe(result => this.vehicles = result);
+      .subscribe(result => this.queryResult = result);
   }
 
   onFilterChange() {
@@ -60,6 +60,11 @@ export class VehicleListComponent implements OnInit {
       this.query.sortBy = columnName;
       this.query.isSortAscending = true;
     }
+    this.populateVehicles();
+  }
+
+  onPageChange(page : any) {
+    this.query.page = page; 
     this.populateVehicles();
   }
 }

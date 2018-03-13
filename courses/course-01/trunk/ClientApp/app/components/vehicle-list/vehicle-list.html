@@ -23,7 +23,8 @@
           <i *ngIf="query.sortBy === c.key" 
             class="fa"
             [class.fa-sort-asc]="query.isSortAscending"
-            [class.fa-sort-desc]="!query.isSortAscending"></i>
+            [class.fa-sort-desc]="!query.isSortAscending"
+          ></i>
         </div>
         <div *ngIf="!c.isSortable">
           {{ c.title }}
@@ -32,7 +33,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let v of vehicles">
+    <tr *ngFor="let v of queryResult.items">
       <td>{{ v.id }}</td>
       <td>{{ v.make.name }}</td>
       <td>{{ v.model.name }}</td>
@@ -43,3 +44,4 @@
     </tr>
   </tbody>
 </table>
+<pagination [total-items]="queryResult.totalItems" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>
