@@ -8,6 +8,6 @@ namespace trunk.Core.Models
 
         [Required]
         [StringLength(255)]
-        public int FileName { get; set; }
+        public string FileName { get; set; }
     }
 }

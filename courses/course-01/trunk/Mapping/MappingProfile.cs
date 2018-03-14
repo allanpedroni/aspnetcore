@@ -24,6 +24,7 @@ namespace trunk.Mapping
                 .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone }))
                 .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource { Id = vf.Feature.Id, Name = vf.Feature.Name })));
             //CreateMap<VehicleQuery, VehicleQueryResource>();
+            CreateMap<Photo, PhotoResource>();
 
             //API Resource to Domain
             CreateMap<SaveVehicleResource, Vehicle>()
