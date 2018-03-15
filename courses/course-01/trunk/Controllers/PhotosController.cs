@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,9 +24,11 @@ namespace trunk.Controllers
         private readonly IHostingEnvironment host;
         private readonly PhotoSettings photoSettings;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IPhotoRepository photoRepository;
 
-        public PhotosController(IMapper mapper, IVehicleRepository vehicleRepository, IHostingEnvironment host, IUnitOfWork unitOfWork, IOptionsSnapshot<PhotoSettings> options)
+        public PhotosController(IMapper mapper, IVehicleRepository vehicleRepository, IHostingEnvironment host, IUnitOfWork unitOfWork, IOptionsSnapshot<PhotoSettings> options, IPhotoRepository photoRepository)
         {
+            this.photoRepository = photoRepository;
             this.photoSettings = options.Value;
             this.unitOfWork = unitOfWork;
             this.host = host;
@@ -70,6 +73,14 @@ namespace trunk.Controllers
 
             return Ok(mapper.Map<Photo, PhotoResource>(photo));
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<PhotoResource>> GetPhotos(int vehicleId)
+        {
+            var photos = await photoRepository.GetPhotosAsync(vehicleId);
+
+            return mapper.Map<IEnumerable<Photo>, IEnumerable<PhotoResource>>(photos);
+         }
 
         private void TransformToThumbnail(string filePath)
         {

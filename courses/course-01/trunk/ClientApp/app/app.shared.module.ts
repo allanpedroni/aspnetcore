@@ -1,3 +1,5 @@
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
+import { PhotoService } from './services/photo.service.ts';
 import { PaginationComponent } from './components/shared/pagination.component';
 import * as Raven from 'raven-js';
 import { AppErrorHandler } from './app.error-handle';
@@ -7,7 +9,7 @@ import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr } from '@angular/http';
 
 import { VehicleService } from './services/vehicle.service';
 import { AppComponent } from './components/app/app.component';
@@ -55,7 +57,10 @@ Raven
     providers: [
         //wherever it needs create ErrorHandler it will create custom AppErrorHandler
         { provide: ErrorHandler, useClass: AppErrorHandler },  
-        VehicleService
+        { provide: BrowserXhr, useClass: BrowserXhrWithProgress },  
+        VehicleService,
+        PhotoService,
+        ProgressService
     ],
     exports: [ToastyModule],
     
