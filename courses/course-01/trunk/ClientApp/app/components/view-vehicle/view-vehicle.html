@@ -42,8 +42,8 @@
     <div role="tabpanel" class="tab-pane" id="photos">
       <h2>Photos</h2>
       <input type="file" (change)="uploadPhoto()" #fileInputField>
-      <div class="progress" *ngIf="progress && progress.percentage < 100">
-        <div class="progress-bar" [style.width]="progress.percentage + ' %'">
+      <div class="progress" *ngIf="progress">
+        <div class="progress-bar" [style.width]="progress.percentage + '%'">
           <span class="sr-only">{{ progress.percentage }}% Complete</span>
         </div>
       </div>

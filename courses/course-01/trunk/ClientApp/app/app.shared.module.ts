@@ -1,7 +1,7 @@
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { PhotoService } from './services/photo.service.ts';
 import { PaginationComponent } from './components/shared/pagination.component';
-import * as Raven from 'raven-js';
+//import * as Raven from 'raven-js';
 import { AppErrorHandler } from './app.error-handle';
 import { ToastyModule } from 'ng2-toasty';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -21,9 +21,9 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle'
 
-Raven
-    .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
-    .install();
+// Raven
+//     .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
+//     .install();
 
 @NgModule({
     declarations: [
