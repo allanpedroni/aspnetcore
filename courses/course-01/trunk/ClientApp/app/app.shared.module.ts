@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { PhotoService } from './services/photo.service.ts';
 import { PaginationComponent } from './components/shared/pagination.component';
@@ -58,6 +59,7 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle'
         //wherever it needs create ErrorHandler it will create custom AppErrorHandler
         { provide: ErrorHandler, useClass: AppErrorHandler },  
         { provide: BrowserXhr, useClass: BrowserXhrWithProgress },  
+        AuthService,
         VehicleService,
         PhotoService,
         ProgressService
