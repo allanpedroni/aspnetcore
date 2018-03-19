@@ -21,3 +21,6 @@ Use this to navigate the user to a different page.
 
 #Using Observable
 We can send multiple requests in parallel and subscribe to the result when all there observables are complete.
+
+#Using auth0.com
+Authentication using OAuth.
