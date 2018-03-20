@@ -20,7 +20,8 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
-import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle'
+import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
+import { CallbackComponent } from './components/callback/callback.component'
 
 // Raven
 //     .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
@@ -36,7 +37,8 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle'
         VehicleFormComponent,
         VehicleListComponent,
         PaginationComponent,
-        ViewVehicleComponent
+        ViewVehicleComponent,
+        CallbackComponent
     ],
     imports: [
         CommonModule,
@@ -49,6 +51,7 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle'
             { path: 'vehicles/edit/:id', component: VehicleFormComponent },
             { path: 'vehicles/:id', component: ViewVehicleComponent },
             { path: 'vehicles', component: VehicleListComponent },
+            { path: 'callback', component: CallbackComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },

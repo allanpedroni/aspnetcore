@@ -20,6 +20,7 @@
     "@angular/router": "4.2.5",
     "@ngtools/webpack": "1.5.0",
     "@types/auth0-js": "^8.11.2",
+    "@types/auth0-lock": "^10.16.4",
     "@types/chai": "4.0.1",
     "@types/jasmine": "2.5.53",
     "@types/webpack-env": "1.13.0",
@@ -63,6 +64,7 @@
   "dependencies": {
     "@types/underscore": "^1.8.7",
     "angular2-jwt": "^0.2.3",
+    "auth0-js": "^9.3.3",
     "auth0-lock": "^11.4.0",
     "font-awesome": "^4.7.0",
     "ng2-toasty": "^4.0.3",

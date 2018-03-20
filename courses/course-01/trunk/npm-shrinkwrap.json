@@ -972,6 +972,15 @@
       "integrity": "sha512-dJXSev5zraC/YMgWzAhvVrbjfkuDSRWR/F0ct2Qd0gm9RDawmLREn4tiZaQYkNXwfJwK387WOmXIhGV1mo+aOw==",
       "dev": true
     },
+    "@types/auth0-lock": {
+      "version": "10.16.4",
+      "resolved": "https://registry.npmjs.org/@types/auth0-lock/-/auth0-lock-10.16.4.tgz",
+      "integrity": "sha512-YjbnI2n657xFfhjLm26v8qg9MQB466EThyX5dMKmR84zvJSVvQcM1AGu2/L8gK4DLj9fC+MngFQDKZ8H0bb4Zw==",
+      "dev": true,
+      "requires": {
+        "@types/auth0-js": "8.11.2"
+      }
+    },
     "@types/chai": {
       "version": "4.0.1",
       "resolved": "https://registry.npmjs.org/@types/chai/-/chai-4.0.1.tgz",
