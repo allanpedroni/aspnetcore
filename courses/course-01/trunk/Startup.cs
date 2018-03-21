@@ -45,6 +45,8 @@ namespace trunk
 
             services.AddMvc();
 
+            string domain = $"https://{Configuration["Auth0:Domain"]}/";
+
             // 1. Add Authentication Services
             services.AddAuthentication(options =>
             {
@@ -53,8 +55,10 @@ namespace trunk
 
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://allanpedroni.auth0.com/";
-                options.Audience = "https://api.trunk.com";
+                //options.Authority = "https://allanpedroni.auth0.com/";
+                //options.Audience = "https://api.trunk.com";
+                options.Authority = domain;
+                options.Audience = Configuration["Auth0:Audience"];
             });
         }
 

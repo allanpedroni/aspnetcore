@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class NavMenuComponent {
 
     constructor(public auth: AuthService) {
-        
+        auth.handleAuthentication();
     }
 
 }
