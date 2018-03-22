@@ -54,11 +54,11 @@ export class VehicleFormComponent implements OnInit {
       this.vehicle.id = 0;
 
     Observable.forkJoin(sources).subscribe(data => {
-      this.makes = data[0];
-      this.features = data[1];
+      this.makes = data[0] as any[];
+      this.features = data[1] as any[];
       
       if (this.vehicle.id){
-        this.setVehicle(data[2]);
+        this.setVehicle(data[2] as Vehicle);
         this.populateModels();
       }
     }, err => {
@@ -106,7 +106,7 @@ export class VehicleFormComponent implements OnInit {
         showClose: true,
         timeout: 5000
       });
-      this.router.navigate(['/vehicles/', vehicle.id])
+      this.router.navigate(['/vehicles/', this.vehicle.id])
     });
   }
 

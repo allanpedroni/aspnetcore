@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, BrowserXhr } from '@angular/http';
+import { BrowserXhr } from '@angular/http';
 
 import { VehicleService } from './services/vehicle.service';
 import { AppComponent } from './components/app/app.component';
@@ -22,6 +22,8 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
 import { UserComponent } from './components/user/user.component'
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 
 // Raven
 //     .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
@@ -43,15 +45,15 @@ import { UserComponent } from './components/user/user.component'
     imports: [
         CommonModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
-            { path: 'vehicles/new', component: VehicleFormComponent },
-            { path: 'vehicles/edit/:id', component: VehicleFormComponent },
-            { path: 'vehicles/:id', component: ViewVehicleComponent },
-            { path: 'vehicles', component: VehicleListComponent },
-            { path: 'user', component: UserComponent },
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'vehicles/new', component: VehicleFormComponent, canActivate: [AuthGuard] },
+            { path: 'vehicles/edit/:id', component: VehicleFormComponent, canActivate: [AuthGuard] },
+            { path: 'vehicles/:id', component: ViewVehicleComponent, canActivate: [AuthGuard] },
+            { path: 'vehicles', component: VehicleListComponent, canActivate: [AuthGuard] },
+            { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -63,6 +65,7 @@ import { UserComponent } from './components/user/user.component'
         { provide: ErrorHandler, useClass: AppErrorHandler },  
         { provide: BrowserXhr, useClass: BrowserXhrWithProgress },  
         AuthService,
+        AuthGuard,
         VehicleService,
         PhotoService,
         ProgressService

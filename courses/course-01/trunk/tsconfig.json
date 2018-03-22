@@ -8,11 +8,15 @@
     "emitDecoratorMetadata": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true, // Workaround for https://github.com/angular/angular/issues/17863. Remove this if you upgrade to a fixed version of Angular.
+    "declaration": false,
     "strict": true,
     "strictNullChecks":false,
     "lib": [ "es6", "dom" ],
     "types": [ "webpack-env" ]
   },
   "exclude": [ "bin", "node_modules" ],
-  "atom": { "rewriteTsconfig": false }
+  "atom": { "rewriteTsconfig": false },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
+  }
 }

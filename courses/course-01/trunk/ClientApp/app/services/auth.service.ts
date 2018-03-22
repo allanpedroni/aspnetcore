@@ -93,7 +93,7 @@ export class AuthService {
     domain: 'allanpedroni.auth0.com',
     responseType: 'token id_token',
     audience: 'https://api.trunk.com',
-    redirectUri: 'http://localhost:5000/user',
+    redirectUri: 'http://localhost:5000/home',
     scope: 'openid profile email'
   });
 
@@ -109,7 +109,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/user']);
+        this.router.navigate(['/home']);
       } else if (err) {
         this.router.navigate(['/']);
         console.log('handleAuthentication:',err);

@@ -39,7 +39,7 @@ export class ViewVehicleComponent implements OnInit {
   ngOnInit() {
 
     this.photoService.getPhotos(this.vehicleId)
-      .subscribe(p => this.photos = p);
+      .subscribe((p : any) => this.photos = p);
 
     this.vehicleService.getVehicle(this.vehicleId)
       .subscribe(
