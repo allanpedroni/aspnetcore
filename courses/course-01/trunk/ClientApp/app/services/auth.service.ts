@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 import Auth0Lock from 'auth0-lock';
 
@@ -87,6 +87,7 @@ export class AuthService {
 // }
 
   userProfile: any;
+  private roles: string[] = [];
 
   auth0 = new auth0.WebAuth({
     clientID: 'Z1pbdTCkXYGCMB1Mve5l0vzd2tLiVUhG',
@@ -105,19 +106,28 @@ export class AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
-      console.log('entrou handleAuthentication:', authResult);
+      //console.log('handleAuthentication: ', authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/home']);
       } else if (err) {
         this.router.navigate(['/']);
-        console.log('handleAuthentication:',err);
+        console.log('ERROR:> handleAuthentication',err);
       }
     });
   }
 
+  public isInRole(role: any) : boolean {
+    return this.roles.indexOf(role) > -1;
+  }
+
   private setSession(authResult : any): void {
+
+    var helper = new JwtHelper();
+    var decodeToken = helper.decodeToken(authResult.idToken);
+    this.roles = decodeToken['https://trunk.com/roles'];
+    
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
@@ -130,6 +140,9 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+
+    this.roles = [];
+    this.userProfile = null;
     // Go back to the home route
     this.router.navigate(['/']);
   }
@@ -150,7 +163,7 @@ export class AuthService {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         this.userProfile = profile;
-        console.log('The user profile: ', profile);
+        //console.log('The user profile: ', profile);
       }
       else
         console.log('There is something error with profile.');
