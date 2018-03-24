@@ -41,6 +41,13 @@ export class VehicleFormComponent implements OnInit {
       });
     }
 
+  ngOnDestroy() {
+    this.makes = null;
+    this.models = null;
+    this.features = null;
+    this.vehicle = null;
+  }
+
   ngOnInit() {
 
     var sources = [
