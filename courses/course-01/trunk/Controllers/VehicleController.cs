@@ -30,7 +30,7 @@ namespace trunk.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize()]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
             logger.LogInformation(1000, "ModelState.IsValid: {0}", ModelState.IsValid.ToString());

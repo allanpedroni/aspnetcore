@@ -28,7 +28,7 @@ export class AuthService {
     scope: 'openid profile email'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   public login() {
     this.auth0.authorize();
@@ -44,16 +44,16 @@ export class AuthService {
         this.router.navigate(['/home']);
       } else if (err) {
         this.router.navigate(['/']);
-        console.log('ERROR:> handleAuthentication',err);
+        console.log('ERROR:> handleAuthentication', err);
       }
     });
   }
 
-  public isInRole(role: any) : boolean {
+  public isInRole(role: any): boolean {
     return this.roles.indexOf(role) > -1;
   }
 
-  private setSession(authResult : any): void {
+  private setSession(authResult: any): void {
     //TODO: console.log it
     //this.user_nickname = decodeToken['https://trunk.com/user/nickname'];
     //this.user_realname = decodeToken['https://trunk.com/user/real_name'];

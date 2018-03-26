@@ -5,7 +5,10 @@ import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 import { VehicleService } from '../../services/vehicle.service';
-import { BrowserXhr } from '@angular/common/http/src/xhr';
+//import { BrowserXhr } from '@angular/common/http/src/xhr';
+import { BrowserXhr } from '@angular/http';
+//common/http/src/xhr
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-view-vehicle',
@@ -30,7 +33,8 @@ export class ViewVehicleComponent implements OnInit {
     private toasty: ToastyService,
     private vehicleService: VehicleService,
     private photoService: PhotoService,
-    private progressService: ProgressService) {
+    private progressService: ProgressService,
+    private auth: AuthService ) {
 
     route.params.subscribe(p => {
       this.vehicleId = +p['id'] || 0;

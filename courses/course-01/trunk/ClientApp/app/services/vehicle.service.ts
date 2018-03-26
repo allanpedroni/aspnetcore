@@ -13,23 +13,21 @@ export class VehicleService {
     headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'))
   };
 
-  constructor(private http:HttpClient, private authHttp: AuthHttp) { }
+  constructor(private http: HttpClient, private authHttp: AuthHttp) { }
 
-  getFeatures()
-  {
+  getFeatures() {
     return this.http.get('/api/features');
   }
 
-  getMakes()
-  {
+  getMakes() {
     return this.http.get('/api/makes');
   }
 
-  create(vehicle : any) {
+  create(vehicle: any) {
     return this.http.post(this.vehiclesEndpoint, vehicle, this.options);
   }
 
-  getVehicle(id : any) {
+  getVehicle(id: any) {
     return this.http.get(this.vehiclesEndpoint + '/' + id);
   }
 
@@ -45,11 +43,11 @@ export class VehicleService {
     return this.http.get(this.vehiclesEndpoint + this.toQueryString(filter));
   }
 
-  toQueryString(obj : any) {
+  toQueryString(obj: any) {
     var parts = [];
     for (var property in obj) {
       var value = obj[property];
-      if (value != null && value != undefined) 
+      if (value != null && value != undefined)
         parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
     }
 

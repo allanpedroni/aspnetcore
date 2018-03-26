@@ -45,15 +45,11 @@ namespace trunk.Persistence.Repository
             var result = new QueryResult<Vehicle>();
 
             var query = context.Vehicles
-                .Include(v => v.Features).ThenInclude(vf => vf.Feature)
                 .Include(v => v.Model).ThenInclude(vf => vf.Make)
+                //.Include(v => v.Features).ThenInclude(vf => vf.Feature)
                 .AsQueryable();
 
-            if (queryObj.MakeId.HasValue)
-                query = query.Where(w => w.Model.MakeId == queryObj.MakeId.Value);
-
-            if (queryObj.ModelId.HasValue)
-                query = query.Where(w => w.Model.Id == queryObj.ModelId.Value);
+            query = query.ApplyFiltering(queryObj);
 
             var columnsMap = new Dictionary<string, Expression<Func<Vehicle, object>>>()
             {

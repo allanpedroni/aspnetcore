@@ -50,7 +50,6 @@ namespace trunk
             // 1. Add Authentication Services
             services.AddAuthentication(options =>
             {
-                //options.AddPolicy("asdas", p => p.);
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 

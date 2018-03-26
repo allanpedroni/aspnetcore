@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ChartModule } from 'angular2-chartjs';
 //import { BrowserXhr } from '@angular/http';
 
 import { VehicleService } from './services/vehicle.service';
@@ -48,25 +49,26 @@ import { ProfileComponent } from './components/profile/profile';
         CommonModule,
         FormsModule,
         HttpClientModule,
+        ChartModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'vehicles/new', component: VehicleFormComponent, canActivate: [AuthGuard] },
             { path: 'vehicles/edit/:id', component: VehicleFormComponent, canActivate: [AuthGuard] },
-            { path: 'vehicles/:id', component: ViewVehicleComponent, canActivate: [AuthGuard] },
-            { path: 'vehicles', component: VehicleListComponent, canActivate: [AuthGuard] },
+            { path: 'vehicles/:id', component: ViewVehicleComponent },
+            { path: 'vehicles', component: VehicleListComponent },
             { path: 'user', component: ProfileComponent, canActivate: [AuthGuard] },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
-        ])        
+        ])
     ],
     providers: [
         //wherever it needs create ErrorHandler it will create custom AppErrorHandler
-        { provide: ErrorHandler, useClass: AppErrorHandler },  
+        { provide: ErrorHandler, useClass: AppErrorHandler },
         //{ provide: BrowserXhr, useClass: BrowserXhrWithProgress },  //moved into providers component view-vehicle.ts
-        { provide: AuthHttp, useClass: HttpClient}, //version of angular2-jwt 0.2.3 doesnt support angular 5
+        { provide: AuthHttp, useClass: HttpClient }, //version of angular2-jwt 0.2.3 doesnt support angular 5
         AuthService,
         AuthGuard,
         //AUTH_PROVIDERS, //version of angular2-jwt 0.2.3 doesnt support angular 5
@@ -76,7 +78,7 @@ import { ProfileComponent } from './components/profile/profile';
         //ProgressService,
     ],
     exports: [ToastyModule],
-    
+
 })
 export class AppModuleShared {
 }
