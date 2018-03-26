@@ -18,14 +18,14 @@ import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './components/admin/admin';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
-import { UserComponent } from './components/user/user.component'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { AuthAdminGuardService as AuthAdminGuard } from './auth/auth-admin-guard.service';
+import { ProfileComponent } from './components/profile/profile';
 
 // Raven
 //     .config('https://f3a1107f47b9453aa2de4ff5889f1cb6@sentry.io/300506')
@@ -42,7 +42,7 @@ import { AuthAdminGuardService as AuthAdminGuard } from './auth/auth-admin-guard
         VehicleListComponent,
         PaginationComponent,
         ViewVehicleComponent,
-        UserComponent
+        ProfileComponent
     ],
     imports: [
         CommonModule,
@@ -55,7 +55,7 @@ import { AuthAdminGuardService as AuthAdminGuard } from './auth/auth-admin-guard
             { path: 'vehicles/edit/:id', component: VehicleFormComponent, canActivate: [AuthGuard] },
             { path: 'vehicles/:id', component: ViewVehicleComponent, canActivate: [AuthGuard] },
             { path: 'vehicles', component: VehicleListComponent, canActivate: [AuthGuard] },
-            { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+            { path: 'user', component: ProfileComponent, canActivate: [AuthGuard] },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent, canActivate: [AuthAdminGuard] },
             { path: 'fetch-data', component: FetchDataComponent },

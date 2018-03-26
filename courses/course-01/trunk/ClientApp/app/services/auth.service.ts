@@ -3,10 +3,19 @@ import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
+import Auth0Lock from 'auth0-lock';
+import { of } from 'rxjs/observable/of';
+import { map, filter, tap, mergeMap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { timer } from 'rxjs/observable/timer'
 
 @Injectable()
 export class AuthService {
 
+  requestedScopes: any;
+  user_realname: any;
+  user_nickname: any;
+  refreshSub: any;
   userProfile: any;
   private roles: string[] = [];
 
@@ -45,11 +54,20 @@ export class AuthService {
   }
 
   private setSession(authResult : any): void {
+    //TODO: console.log it
+    //this.user_nickname = decodeToken['https://trunk.com/user/nickname'];
+    //this.user_realname = decodeToken['https://trunk.com/user/real_name'];
+
+    const scopes = authResult.scope || this.requestedScopes || '';
+
     // Set the time that the Access Token will expire at
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('scopes', JSON.stringify(scopes));
+
+    this.scheduleRenewal();
   }
 
   private readRolesFromSession() {
@@ -63,6 +81,8 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+
+    this.unscheduleRenewal();
 
     this.roles = [];
     this.userProfile = null;
@@ -92,5 +112,55 @@ export class AuthService {
         console.log('There is something error with profile.');
       cb(err, profile);
     });
+  }
+
+  public renewToken() {
+    this.auth0.checkSession({}, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
+  }
+
+  public scheduleRenewal() {
+    if (!this.isAuthenticated()) { return; }
+    this.unscheduleRenewal();
+
+    const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
+
+    const expiresIn$ = of(expiresAt)
+      .pipe(
+        mergeMap(
+          (expiresAt: any) => {
+            const now = Date.now();
+            // Use timer to track delay until expiration
+            // to run the refresh at the proper time
+            return timer(Math.max(1, expiresAt - now));
+          }
+        )
+      );
+
+    // Once the delay time from above is
+    // reached, get a new JWT and schedule
+    // additional refreshes
+    this.refreshSub = expiresIn$.subscribe(
+      () => {
+        this.renewToken();
+        this.scheduleRenewal();
+      }
+    );
+  }
+
+  public unscheduleRenewal() {
+    if (this.refreshSub) {
+      this.refreshSub.unsubscribe();
+    }
+  }
+
+  public userHasScopes(scopes: Array<string>): boolean {
+    const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 }

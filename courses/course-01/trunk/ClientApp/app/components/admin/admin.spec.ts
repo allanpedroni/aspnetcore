@@ -1,6 +1,6 @@
 /// <reference path="../../../../node_modules/@types/jasmine/index.d.ts" />
 import { assert } from 'chai';
-import { AdminComponent } from './admin.component';
+import { AdminComponent } from './admin';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
 let fixture: ComponentFixture<AdminComponent>;
