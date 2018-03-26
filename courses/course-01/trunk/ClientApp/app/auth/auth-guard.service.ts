@@ -7,9 +7,9 @@ import { ToastyService } from 'ng2-toasty';
 export class AuthGuardService implements CanActivate {
 
   constructor(
-    public auth: AuthService, 
-    public router: Router,
-    private toastyService: ToastyService) {}
+    protected auth: AuthService, 
+    protected router: Router,
+    protected toastyService: ToastyService) {}
 
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {

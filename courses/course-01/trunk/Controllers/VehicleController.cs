@@ -30,6 +30,7 @@ namespace trunk.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
             logger.LogInformation(1000, "ModelState.IsValid: {0}", ModelState.IsValid.ToString());
@@ -86,7 +87,8 @@ namespace trunk.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")] 
+        [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateVehicle(int id, [FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
@@ -110,6 +112,7 @@ namespace trunk.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id, includeRelated: false);
