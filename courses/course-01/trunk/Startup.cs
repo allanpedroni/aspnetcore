@@ -20,10 +20,15 @@ namespace trunk
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                //.AddEnvironmentVariables();
 
-            Configuration = configuration;
+            if (env.IsDevelopment())
+                builder = builder.AddUserSecrets<Startup>();
+
+            builder = builder.AddEnvironmentVariables();
+            
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
