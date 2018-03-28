@@ -1,4 +1,14 @@
-# Pepper
+## Problems solved
+
+Version of angular doenst work with the latest version. Used this to fix it.
+
+1. npm uninstall angularfire2 firebase --save
+2. npm install angularfire2@5.0.0-rc.3 --save
+3. npm install firebase --save
+4. ng serve
+
+
+<!-- # Pepper
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.4.
 
@@ -25,4 +35,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md). -->
