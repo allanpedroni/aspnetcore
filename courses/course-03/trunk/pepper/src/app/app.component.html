@@ -4,11 +4,16 @@
     Welcome to {{title}}!
   </h1>
 </div>
+
+<button (click)="add()">Add</button>
+<button (click)="update()">Update</button>
+<button (click)="delete()">Delete</button>
+
+Using pipe Async
 <ul>
-  <li *ngFor="let c of cuisines">{{ c }}</li>
-</ul>
-<ul>
-  <div *ngFor="let c of items | async">
+  <div *ngFor="let c of cuisines | async">
     {{ c }}
   </div>
 </ul>
+
+{{ (restaurant | async | json)}}
