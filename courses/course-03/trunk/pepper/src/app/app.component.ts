@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, state } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject, QueryFn } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
@@ -23,15 +23,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.cuisines = this.filterNodes('/cuisines');
-    this.restaurants = this.filterNode('/restaurants')
+    this.cuisines = this.filterNodes('/cuisines',
+      req => req.orderByValue().equalTo('Italian'));
+
+    this.restaurants = this.filterNodes('/restaurants',
+      req => req.orderByChild('rating').equalTo(5).limitToFirst(5))
       .map(m => {
         m.map(restaurant => {
           restaurant.cuisineType = this.filterNode('/cuisines/' + restaurant.cuisine);
           restaurant.featureTypes = [];
-          // tslint:disable-next-line:forin
+
           for (const f in restaurant.features) {
-            restaurant.featureTypes.push(this.filterNode('/features/' + f));
+            if (f)
+              restaurant.featureTypes.push(this.filterNode('/features/' + f));
           }
         });
 
@@ -43,10 +47,10 @@ export class AppComponent implements OnInit {
     // this.restaurants.subscribe(s => console.log('cuisines', s));
   }
 
-  filterNodes(listPath): Observable<any[]> {
+  filterNodes(listPath, filter?: QueryFn): Observable<any[]> {
     // this.cusineFireList = this.db.list(listPath);
     // return this.cusineFireList.valueChanges();
-    return this.db.list(listPath).valueChanges();
+    return this.db.list(listPath, filter).valueChanges();
   }
 
   filterNode(node): Observable<any[]> {
@@ -73,7 +77,6 @@ export class AppComponent implements OnInit {
     this.restaurantFireList.set(
       { 1: { address: { city: 'belo horizonte REPLACED' }, 'cuisine': 'brazilian', 'name': 'new name', 'rating': 5 } }
     );
-
     // firebase.database().ref('restaurant').set({
     //   username: 'teste',
     //   email: 'allan@gmail.com',
