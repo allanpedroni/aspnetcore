@@ -1,0 +1,39 @@
+{
+  "cuisines" : [ null, "Italian", "Indian", "Thai", "Japanese", "Spanish", "Chinese", "British" ],
+  "features" : [ null, "Wi-fi", "Live Music", "Delivery" , "Bluetooh", "Sound blaster" ],
+  "restaurants" : [ null, {
+    "address" : {
+      "city" : "Belo Horizonte"
+    },
+    "cuisine" : 3,
+    "features" : [ null, true, true ],
+    "name" : "Porcão",
+    "rating" : 5
+  }, {
+    "address" : {
+      "city" : "Malvern"
+    },
+    "cuisine" : 5,
+    "features" : [ null, true, true, true ],
+    "name" : "Remy's Spanish Restaurant",
+    "rating" : 5
+  }, {
+    "address" : {
+      "city" : "Camberwell"
+    },
+    "cuisine" : 3,
+    "features" : {
+      "2" : true
+    },
+    "name" : "Bangkok Terrace",
+    "rating" : 5
+  }, {
+    "address" : {
+      "city" : "Camberwell"
+    },
+    "cuisine" : 3,
+    "features" : [ null, true ],
+    "name" : "Red Spice Road",
+    "rating" : 5
+  } ]
+}
