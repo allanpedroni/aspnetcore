@@ -9,11 +9,29 @@
 <button (click)="update()">Update</button>
 <button (click)="delete()">Delete</button>
 
-Using pipe Async
+<h1>Cuisines</h1>
 <ul>
-  <div *ngFor="let c of cuisines | async">
-    {{ c }}
-  </div>
+  <li *ngFor="let c of cuisines | async">{{ c }} </li>
 </ul>
 
-{{ (restaurant | async | json)}}
+<h1>Restaurants</h1>
+<ul>
+  <li *ngFor="let r of (restaurants | async)">
+    {{ r.name }} - {{ (r.cuisineType | async) }}
+    <ul>
+      <li *ngFor="let feature of r.featureTypes">
+        {{ (feature | async) }}
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div *ngIf="afAuth.authState | async as user; else showLogin">
+  <h1>Hello {{ user.displayName }} {{ user.email }}!</h1>
+  <img src="{{ user.photoURL }}" alt="">
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+</ng-template>

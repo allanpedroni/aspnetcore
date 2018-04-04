@@ -1,7 +1,7 @@
 {
-  "cuisines" : [ null, "Italian", "Indian", "Thai", "Japanese", "Spanish", "Chinese", "British" ],
-  "features" : [ null, "Wi-fi", "Live Music", "Delivery" , "Bluetooh", "Sound blaster" ],
-  "restaurants" : [ null, {
+  "cuisines" : [ "Italian", "Indian", "Thai", "Japanese", "Spanish", "Chinese", "British" ],
+  "features" : [ "Wi-fi", "Live Music", "Delivery", "Bluetooh", "Sound blaster" ],
+  "restaurants" : [ {
     "address" : {
       "city" : "Belo Horizonte"
     },
