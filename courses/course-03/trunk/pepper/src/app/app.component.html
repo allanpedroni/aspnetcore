@@ -28,7 +28,7 @@
 
 <div *ngIf="afAuth.authState | async as user; else showLogin">
   <h1>Hello {{ user.displayName }} {{ user.email }}!</h1>
-  <img src="{{ user.photoURL }}" alt="">
+  <!-- <img src="{{ user.photoURL }}" alt=""> -->
   <button (click)="logout()">Logout</button>
 </div>
 <ng-template #showLogin>

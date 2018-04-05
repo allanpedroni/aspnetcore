@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { AngularFireDatabase, AngularFireList, AngularFireObject, QueryFn } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
           }
         });
 
-        console.log(m);
+        // console.log(m);
         return m;
       });
 
@@ -99,26 +100,43 @@ export class AppComponent implements OnInit {
 
     // firebase.auth().signInWithPopup(provider);
 
-    this.afAuth.auth.signInWithPopup(provider).then(function (result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      console.log('token', result.credential.accessToken);
-      // The signed-in user info.
-      console.log('user', result.user);
-      // ...
-    }).catch(function (error) {
-      // Handle Errors here.
-      console.log('errorCode', error.code);
-      console.log('errorMessage', error.message);
-      // The email of the user's account used.
-      console.log('email', error.email);
-      // The firebase.auth.AuthCredential type that was used.
-      console.log('credential', error.credential);
-      // ...
+    this.afAuth.auth.onAuthStateChanged((o: any) => {
+      if (o) {
+        localStorage.setItem('uid', o.uid);
+        this.db.object('/users/' + o.uid).update({
+          accessToken: o.qa,
+          displayName: o.displayName,
+          email: o.email
+        });
+      }
     });
+
+    this.afAuth.auth.signInWithPopup(provider)
+      .then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // console.log('token', result.credential.accessToken);
+        // The signed-in user info.
+        // console.log('user', result.user);
+        // ...
+      }).catch(function (error) {
+        // Handle Errors here.
+        // console.log('errorCode', error.code);
+        // console.log('errorMessage', error.message);
+        // The email of the user's account used.
+        // console.log('email', error.email);
+        // The firebase.auth.AuthCredential type that was used.
+        // console.log('credential', error.credential);
+      });
+      // this.afAuth.authState.subscribe(s => {
+      //   console.log('sss', s);
+      // });
   }
   logout() {
     this.afAuth.auth.signOut();
     // firebase.auth().signOut();
+    const uid = localStorage.getItem('uid');
+    // console.log('x', o);
+    this.db.object('/users/' + uid).remove();
   }
 
   writeNewPost(uid, username, picture, title, body) {
