@@ -24,6 +24,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.feedForm();
+  }
+
+  feedForm() {
     this.cuisines = this.filterNodes('/cuisines',
       req => req.orderByValue().equalTo('Italian'));
 
@@ -43,7 +47,6 @@ export class AppComponent implements OnInit {
         // console.log(m);
         return m;
       });
-
     // this.cuisines.subscribe(s => console.log('cuisines', s));
     // this.restaurants.subscribe(s => console.log('cuisines', s));
   }
@@ -91,14 +94,15 @@ export class AppComponent implements OnInit {
 
   login() {
 
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase.auth().languageCode = 'pt';
-    provider.setCustomParameters({
-      'login_hint': 'allan.barros@gmail.com'
-    });
+    // const provider = new firebase.auth.GoogleAuthProvider();
+    // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    // firebase.auth().languageCode = 'pt';
+    // provider.setCustomParameters({
+    //   'login_hint': 'allan.barros@gmail.com'
+    // });
 
-    // firebase.auth().signInWithPopup(provider);
+    // // firebase.auth().signInWithPopup(provider);
+
 
     this.afAuth.auth.onAuthStateChanged((o: any) => {
       if (o) {
@@ -111,29 +115,50 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.afAuth.auth.signInWithPopup(provider)
-      .then(function (result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // console.log('token', result.credential.accessToken);
-        // The signed-in user info.
-        // console.log('user', result.user);
-        // ...
-      }).catch(function (error) {
-        // Handle Errors here.
-        // console.log('errorCode', error.code);
-        // console.log('errorMessage', error.message);
-        // The email of the user's account used.
-        // console.log('email', error.email);
-        // The firebase.auth.AuthCredential type that was used.
-        // console.log('credential', error.credential);
-      });
-      // this.afAuth.authState.subscribe(s => {
-      //   console.log('sss', s);
-      // });
+    // this.afAuth.auth.signInWithPopup(provider)
+    //   .then(function (result) {
+    //     // This gives you a Google Access Token. You can use it to access the Google API.
+    //     // console.log('token', result.credential.accessToken);
+    //     // The signed-in user info.
+    //     // console.log('user', result.user);
+    //     // ...
+    //   }).catch(function (error) {
+    //     // Handle Errors here.
+    //     // console.log('errorCode', error.code);
+    //     // console.log('errorMessage', error.message);
+    //     // The email of the user's account used.
+    //     // console.log('email', error.email);
+    //     // The firebase.auth.AuthCredential type that was used.
+    //     // console.log('credential', error.credential);
+    //   });
+    //   // this.afAuth.authState.subscribe(s => {
+    //   //   console.log('sss', s);
+    //   // });
+
+    firebase.auth().signInWithEmailAndPassword('allan.barros@gmail.com', 's@d#f$chjk5l')
+      .then(a => {
+        this.feedForm();
+        console.log('login-then', a);
+      })
+      .catch(t => console.log('login-error', t));
   }
+
+  register() {
+
+    firebase.auth().createUserWithEmailAndPassword('allan.barros@gmail.com', '123456')
+      .then(t => {
+        console.log('register-then', t);
+
+        this.afAuth.auth.sendPasswordResetEmail('allan.barros@gmail.com');
+      })
+      .catch(t => console.log('register-error', t));
+  }
+
   logout() {
-    this.afAuth.auth.signOut();
-    // firebase.auth().signOut();
+    // this.afAuth.auth.signOut();
+    firebase.auth().signOut();
+    this.cuisines = null;
+    this.restaurants = null;
     const uid = localStorage.getItem('uid');
     // console.log('x', o);
     this.db.object('/users/' + uid).remove();
