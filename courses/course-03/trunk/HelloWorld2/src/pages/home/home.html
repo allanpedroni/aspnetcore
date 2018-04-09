@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="selectItem(item)">
+      {{ item.description }} - push another page
+    </button>
+  </ion-list>
+  
+  <button ion-button (click)="presentActionSheet()">Menu Action Sheet</button>
+
+  <button ion-button (click)="showConfirm()">Confirm dialog</button>
+
+  <button ion-button (click)="showCheckbox()">Confirm checkbox dialog</button>
+  <br><br>
+  Toast <br>
+  <button ion-button (click)="showToast('bottom')">Show Toast Bottom Position</button>
+  <button ion-button (click)="showToast('top')">Show Toast Top Position</button>
+  <button ion-button (click)="showToast('middle')">Show Toast Middle Position</button>
+  <button ion-button (click)="showLongToast()">Show Long Toast</button>
+
+  <button ion-button block (click)="showDismissDurationToast()">Show Custom Duration Toast</button>
+  <button ion-button block (click)="showToastWithCloseButton()">Show Close Button Toast</button>
+
+</ion-content>s

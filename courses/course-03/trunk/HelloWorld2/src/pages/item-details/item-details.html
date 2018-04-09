@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button icon-only (click)="cancel()">
+                <ion-icon name="arrow-up"></ion-icon>
+                Cancel
+            </button>
+        </ion-buttons>
+        <ion-title>
+            Item Details
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="done()">
+                <ion-icon name="done-all"></ion-icon>
+                Done
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <ion-list>
+            <ion-label fixed>Description</ion-label>
+            <ion-input type="text" [(ngModel)]="item.description"></ion-input>
+        </ion-list>
+    </ion-list>
+    <div text-center>
+        <button ion-button color="primary" round>Save</button>
+    </div>
+</ion-content>
