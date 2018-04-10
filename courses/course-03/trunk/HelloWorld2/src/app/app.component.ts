@@ -18,8 +18,8 @@ export class MyApp {
       if (!platform.is('cordova'))
         return;
 
-      statusBar.styleDefault();
-      splashScreen.hide();
+      statusBar.styleBlackOpaque();
+      splashScreen.show();
     });
     console.log(platform.platforms());
     // console.log(platform.versions());

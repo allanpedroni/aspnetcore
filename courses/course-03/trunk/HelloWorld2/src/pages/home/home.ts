@@ -1,6 +1,8 @@
+import { AppVersion } from '@ionic-native/app-version';
 import { ItemDetailsPage } from './../item-details/item-details';
 import { Component } from '@angular/core';
 import { NavController, ModalController, Platform, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-home',
@@ -21,12 +23,32 @@ export class HomePage {
     public plt: Platform,
     private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController,
-    private toastCtrl : ToastController) {
+    private toastCtrl: ToastController,
+    private version: AppVersion,
+    private geo: Geolocation) {
+
+    // if (!plt.is('cordova'))
+    // {
+    //   console.log('cordova_not_available');
+    //   return;
+    // }
+    
+    this.geo.getCurrentPosition().then((resp) => {
+      console.log(resp);
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
     this.plt.ready().then((readySource) => {
-      console.log('Platform ready from', readySource);
+      // this.version.getAppName().then(v => console.log("AppName", v));
+      // this.version.getPackageName().then(v => console.log("PackageName", v));
+      // this.version.getVersionCode().then(v => console.log("VersionCode", v));
+      // this.version.getVersionNumber().then(v => console.log("VersionNumber", v));
+
+      console.log('readySource', readySource);
     });
-    console.log(this.plt.platforms());
-    console.log(this.plt.versions());
+    // console.log(this.plt.platforms());
+    // console.log(this.plt.versions());
   }
 
   selectItem(item) {
