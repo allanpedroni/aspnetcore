@@ -1,4 +1,5 @@
 import { Component, DoCheck } from '@angular/core';
+import { Map, List } from 'immutable';
 
 class ChangeDetector {
   private _oldState;
@@ -18,13 +19,12 @@ class ChangeDetector {
 })
 export class AppComponent implements DoCheck {
   movies = [
-    { title: 'm1' },
-    { title: 'm2' },
-    { title: 'm3' }
+    Map({ title: 'm1', genre: 1 }),
+    Map({ title: 'm2' }),
+    Map({ title: 'm3' })
   ];
 
   constructor() {
-
   }
 
   ngDoCheck() {
@@ -32,6 +32,9 @@ export class AppComponent implements DoCheck {
   }
 
   click() {
-    this.movies[0].title = 'update';
+    let movie = this.movies[0];
+    console.log('ms', this.movies);
+    console.log('m', movie);
+    this.movies[0] = movie.set('title', 'UPDATED');
   }
 }
