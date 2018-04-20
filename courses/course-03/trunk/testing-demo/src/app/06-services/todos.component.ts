@@ -12,7 +12,7 @@ export class TodosComponent {
   }
 
   add() {
-    var newTodo = { title: '... ' };
+    let newTodo = { title: '... ' };
     this.service.add(newTodo).subscribe(
       t => this.todos.push(t),
       err => this.message = err);
