@@ -5,4 +5,8 @@ describe('compute', () => {
         const result = compute(-1);
         expect(result).toBe(0);
     });
+    it('should incremente the input if it is positive', () => {
+        const result = compute(1);
+        expect(result).toBe(2);
+    });
 });
