@@ -6,14 +6,12 @@ describe('GreeterComponent', () => {
   let component: GreeterComponent;
   let fixture: ComponentFixture<GreeterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
+
     TestBed.configureTestingModule({
       declarations: [ GreeterComponent ]
-    })
-    .compileComponents();
-  }));
+    });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(GreeterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
