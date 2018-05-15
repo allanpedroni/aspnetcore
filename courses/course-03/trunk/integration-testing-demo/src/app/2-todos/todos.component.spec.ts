@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs/observable';
@@ -35,13 +35,27 @@ xdescribe('TodosComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should load todos from the server', () => {
+
+  it('should load todos from the server-async', async(() => {
      let service = TestBed.get(TodoService); // return dependencies that are registered at the module level
     // fixture.debugElement.injector.get(TodoService)
-    spyOn(service, 'getTodos').and.returnValue(Observable.from([1, 2, 3]));
+    // spyOn(service, 'getTodos').and.returnValue(Observable.from([1, 2, 3]));
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([1, 2, 3]));
 
     fixture.detectChanges();
 
+    fixture.whenStable().then(() => {
+      expect(component.todos.length).toBe(3);
+    });
+  }));
+  it('should load todos from the server-fakeAsync', fakeAsync(() => {
+     let service = TestBed.get(TodoService); // return dependencies that are registered at the module level
+    // fixture.debugElement.injector.get(TodoService)
+    // spyOn(service, 'getTodos').and.returnValue(Observable.from([1, 2, 3]));
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([1, 2, 3]));
+
+    fixture.detectChanges();
+    tick();
     expect(component.todos.length).toBe(3);
-  });
+  }));
 });
