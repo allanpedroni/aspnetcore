@@ -1,6 +1,9 @@
-export class Ingrediente {
-    // public name: string;
-    // public amount: number;
+export class Ingredient {
+    public name: string;
+    public amount: number;
 
-    constructor(public n: string, public a: number) { }
+    constructor(n: string, a: number) {
+        this.name = n;
+        this.amount = a;
+    }
 }
