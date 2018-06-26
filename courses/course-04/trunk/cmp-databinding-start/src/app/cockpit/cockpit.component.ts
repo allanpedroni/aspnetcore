@@ -1,6 +1,4 @@
-import { Properties } from '../properties';
-import { Component, OnInit, Output, ViewChild, ElementRef, OnChanges } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -8,49 +6,22 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-  @Output() serverCreated = new EventEmitter<Properties>();
-  @Output() blueprintCreated = new EventEmitter<Properties>();
-  serverElements = [];
+  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
   // newServerName = '';
   // newServerContent = '';
   @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
   constructor() { }
 
-  // ngOnChanges(): void { // called after a bound input property changes
-  // }
-
-  ngOnInit() { // called once the component is initialize
+  ngOnInit() {
   }
-
-  // ngDoCheck() { //called during every change detection run
-  // }
-
-  // ngAfterContentInit() { // called after content (ng-content) has been project into view
-  // }
-
-  // ngAfterContentChecked() { // called every time the project content has been checked
-  // }
-
-  // ngAfterViewInit() { // called after the component's view (and child views) has been initialized
-  // }
-
-  // ngAfterViewChecked() { // called every time the view (and child views) have been checked
-  // }
-
-  // ngOnDestroy(): void { // called once the component is about to be destroyed
-  // }
 
   onAddServer(nameInput: HTMLInputElement) {
     this.serverCreated.emit({
       serverName: nameInput.value,
       serverContent: this.serverContentInput.nativeElement.value
     });
-    // this.serverElements.push({
-    //   type: 'server',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
   }
 
   onAddBlueprint(nameInput: HTMLInputElement) {
@@ -58,11 +29,6 @@ export class CockpitComponent implements OnInit {
       serverName: nameInput.value,
       serverContent: this.serverContentInput.nativeElement.value
     });
-    // this.serverElements.push({
-    //   type: 'blueprint',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
   }
 
 }
