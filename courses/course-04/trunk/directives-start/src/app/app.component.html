@@ -6,12 +6,20 @@
       <br>
       <ul class="list-group">
         <div *ngIf="onlyOdd">
-          <li class="list-group-item" *ngFor="let onum of oddNumbers">
-            {{ onum }}
+          <li 
+            class="list-group-item" 
+            [ngClass]="{'odd': oddNum % 2 !== 0}"
+            [ngStyle]="{'background-color': oddNum % 2 !== 0 ? 'yellow' : 'blue' }"
+            *ngFor="let oddNum of oddNumbers">
+            {{ oddNum }}
           </li>
         </div>
         <div *ngIf="!onlyOdd">
-          <li class="list-group-item" *ngFor="let en of evenNumbers">
+          <li 
+            class="list-group-item" 
+            [ngClass]="{'odd': en % 2 !== 0}"
+            [ngStyle]="{'background-color': en % 2 !== 0 ? 'green' : 'blue' }"
+            *ngFor="let en of evenNumbers">
             {{ en }}
           </li>
         </div>
