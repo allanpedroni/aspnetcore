@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./edit-server.component.css']
 })
 export class EditServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number, name: string, status: string };
   serverName = '';
   serverStatus = '';
   allowEdit = false;
@@ -18,7 +18,6 @@ export class EditServerComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     this.route.queryParams
       .subscribe(
         (queryParams: Params) => {
@@ -31,7 +30,7 @@ export class EditServerComponent implements OnInit {
   }
 
   onUpdateServer() {
-    this.serversService.updateServer(this.server.id, {name: this.serverName, status: this.serverStatus});
+    this.serversService.updateServer(this.server.id, { name: this.serverName, status: this.serverStatus });
   }
 
 }
