@@ -1,3 +1,4 @@
+import { AuthService } from './auth-service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -14,8 +15,8 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: 'users/:id/:name', component: UserComponent },
     ] },
-    { path: 'servers', component: ServersComponent, children: [
-      { path: ':id', component: ServerComponent },
+    { path: 'servers', canActivate: [AuthService], component: ServersComponent, children: [
+      { path: ':id', component: ServerComponent, },
       { path: ':id/edit', component: EditServerComponent },
     ] },
     { path: 'not-found', component: PageNotFoundComponent},
