@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './servers/edit-server/cam-deactivate-guard.service';
 import { AuthService } from './auth-service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,7 @@ const appRoutes: Routes = [
     ] },
     { path: 'servers', canActivateChild: [AuthService], component: ServersComponent, children: [
       { path: ':id', component: ServerComponent, },
-      { path: ':id/edit', component: EditServerComponent },
+      { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },
     ] },
     { path: 'not-found', component: PageNotFoundComponent},
     { path: '**', redirectTo: '/not-found' }, // redirecting , wildcard = **. this must be in the last line
