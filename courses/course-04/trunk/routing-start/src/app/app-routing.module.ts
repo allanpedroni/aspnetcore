@@ -1,3 +1,4 @@
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { CanDeactivateGuard } from './servers/edit-server/cam-deactivate-guard.service';
 import { AuthService } from './auth-service';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
       { path: ':id', component: ServerComponent, },
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },
     ] },
-    { path: 'not-found', component: PageNotFoundComponent},
+    // { path: 'not-found', component: PageNotFoundComponent},
+    { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!'}},
     { path: '**', redirectTo: '/not-found' }, // redirecting , wildcard = **. this must be in the last line
     // { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }
   ];
