@@ -1,3 +1,4 @@
+import { ServerResolver } from './servers/server/server-resolver.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CanDeactivateGuard } from './servers/edit-server/cam-deactivate-guard.service';
 import { AuthService } from './auth-service';
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
       { path: 'users/:id/:name', component: UserComponent },
     ] },
     { path: 'servers', canActivateChild: [AuthService], component: ServersComponent, children: [
-      { path: ':id', component: ServerComponent, },
+      { path: ':id', component: ServerComponent, resolve: {server: ServerResolver} },
       { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard] },
     ] },
     // { path: 'not-found', component: PageNotFoundComponent},
