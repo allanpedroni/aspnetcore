@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,11 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const myNumbers = interval(1000);
+    myNumbers.subscribe(
+      (number: number) => {
+        console.log(number);
+      }
+    );
   }
-
 }
