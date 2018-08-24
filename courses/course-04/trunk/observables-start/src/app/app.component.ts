@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
       (id: number) => {
         this.user1Activated = (id === 1);
         this.user2Activated = !this.user1Activated;
+        
       }
     );
   }
