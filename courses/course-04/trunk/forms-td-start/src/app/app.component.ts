@@ -51,5 +51,7 @@ export class AppComponent {
     this.user.secretQuestion = this.signForm.value.secret;
     this.user.answer = this.signForm.value.questionAnswer;
     this.user.gender = this.signForm.value.gender;
+
+    this.signForm.reset();
   }
 }
