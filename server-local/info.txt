@@ -1,3 +1,5 @@
+
+* server for htmls/javascripts
 npm install http-server -g
 
 after that
