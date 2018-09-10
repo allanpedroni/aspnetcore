@@ -1,3 +1,6 @@
+Development servers
+
+> http-server
 
 * server for htmls/javascripts
 npm install http-server -g
@@ -5,3 +8,19 @@ npm install http-server -g
 after that
 
 http-server PATH
+
+
+> lite-server
+
+https://github.com/johnpapa/lite-server
+
+
+> webpack-dev-server (DEV ONLY)
+
+https://github.com/webpack/webpack-dev-server
+
+
+
+
+Usefull links:
+* https://angular.io/guide/deployment

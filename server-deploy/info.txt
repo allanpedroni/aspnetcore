@@ -1,3 +1,13 @@
-heroku
-digitalocean
-firebase
+Production servers
+
+> heroku
+> digitalocean
+> firebase
+
+> https://httpd.apache.org/
+> http://nginx.org/
+
+
+
+Usefull links:
+* https://angular.io/guide/deployment
