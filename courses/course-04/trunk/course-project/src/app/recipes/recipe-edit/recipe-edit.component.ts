@@ -40,6 +40,9 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.recipeForm);
+
     const newRecipe = new Recipe(this.recipeForm.value['name'],
       this.recipeForm.value['description'],
       this.recipeForm.value['imagePath'],
@@ -69,6 +72,8 @@ export class RecipeEditComponent implements OnInit {
   onCancel() {
     this.router.navigate(['../', {relativeTo: this.route}]);
   }
+
+  get formData() { return <FormArray>this.recipeForm.get('ingredients'); }
 
   private initForm() {
     let recipeName = '';
