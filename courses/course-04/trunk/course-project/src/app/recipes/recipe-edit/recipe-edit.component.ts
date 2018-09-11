@@ -2,6 +2,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -28,15 +29,27 @@ export class RecipeEditComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
-          this.editMode = +params['id'] !== null;
+          const idQuery = +params['id'];
+          this.id = idQuery;
+          this.editMode = idQuery !== null && !isNaN(idQuery);
+          console.log(this.editMode);
           this.initForm();
         }
       );
   }
 
   onSubmit() {
-    console.log(this.recipeForm);
+    const newRecipe = new Recipe(this.recipeForm.value['name'],
+      this.recipeForm.value['description'],
+      this.recipeForm.value['imagePath'],
+      this.recipeForm.value['ingredients']);
+
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value); // newRecipe);
+    } else {
+      console.log('added?');
+      this.recipeService.addRecipe(this.recipeForm.value); // newRecipe);
+    }
   }
 
   onAddIngredient() {

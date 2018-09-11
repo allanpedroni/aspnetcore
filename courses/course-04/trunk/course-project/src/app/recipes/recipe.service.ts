@@ -2,17 +2,22 @@ import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Ingredient } from './../shared/ingredient.model';
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
 
+  recipesChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
-    new Recipe('A test Recipe 1', 'This is simply a teste 1', 'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
+    // tslint:disable-next-line:max-line-length
+    new Recipe('A test Recipe 1', 'This is simply a teste 1', 'https://us.123rf.com/450wm/alexraths/alexraths1604/alexraths160400131/56097020-beef-steaks-on-the-grill-with-flames.jpg',
       [
         new Ingredient('Meat', 1),
         new Ingredient('French Fries', 20)
       ]),
-    new Recipe('Cheese Burguer', 'This is simply a teste 2', 'https://cdn.pixabay.com/photo/2017/11/06/07/21/clay-2922934_960_720.png',
+    // tslint:disable-next-line:max-line-length
+    new Recipe('Cheese Burguer', 'This is simply a teste 2', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS8w7AT6wAyI1eI56JClTsrbwVfzuDx3x3Vf6mwc2w52GfZWX',
       [
         new Ingredient('Bread', 2),
         new Ingredient('Meat', 2),
@@ -21,7 +26,7 @@ export class RecipeService {
       ]),
   ];
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private slService: ShoppingListService) { }
 
   getRecipes() {
     return this.recipes.slice();
@@ -32,6 +37,16 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
+    this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
