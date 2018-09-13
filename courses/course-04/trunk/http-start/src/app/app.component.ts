@@ -46,6 +46,8 @@ export class AppComponent {
       );
   }
 
+  onPut() {}
+
   private generateId() {
     return Math.round(Math.random() * 10000);
   }

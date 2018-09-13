@@ -11,7 +11,7 @@ export class ServerService {
     const headers = new Headers({
         'Content-Type': 'application/json'
       });
-    return this.http.post(this.url,
+    return this.http.put(this.url,
       servers,
       {headers: headers});
   }
@@ -19,4 +19,6 @@ export class ServerService {
   getServers() {
     return this.http.get(this.url);
   }
+
+
 }
