@@ -32,9 +32,9 @@ export class AuthService {
       .catch(error => console.log('erro signinUser', error));
   }
 
-  signOut() {
-    this.token = '';
+  logout() {
     firebase.auth().signOut();
+    this.token = null;
   }
 
   getToken() {
