@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from './../recipes/recipe.service';
 import { Injectable } from '@angular/core';
@@ -9,14 +10,19 @@ export class DataStorageService {
   url = 'https://code-udemy.firebaseio.com/angular6.json';
 
   constructor(private http: Http,
-    private recipeService: RecipeService) { }
+    private recipeService: RecipeService,
+    private authService: AuthService) { }
 
   storeRecipes() {
-    return this.http.put(this.url, this.recipeService.getRecipes());
+    const token = this.authService.getToken();
+
+    return this.http.put(this.url + '?auth=' + token, this.recipeService.getRecipes());
   }
 
   getRecipes() {
-    return this.http.get(this.url)
+    const token = this.authService.getToken();
+
+    return this.http.get(this.url + '?auth=' + token)
       .pipe(map(
         (response: Response) => {
           const recipes: Recipe[] = response.json();

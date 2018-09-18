@@ -5,6 +5,8 @@ import 'firebase/auth';
 
 @Injectable()
 export class AuthService {
+  token = '';
+
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(
@@ -17,7 +19,29 @@ export class AuthService {
 
   signinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(value => console.log('then signinUser', value))
+      .then(response => {
+        console.log('signinUser', response);
+
+        firebase.auth().currentUser.getIdToken()
+          .then(
+            (token: string) => {
+              this.token = token;
+            }
+          );
+      })
       .catch(error => console.log('erro signinUser', error));
+  }
+
+  signOut() {
+    this.token = '';
+    firebase.auth().signOut();
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  isAuthenticated() {
+    return this.getToken() !== '';
   }
 }
