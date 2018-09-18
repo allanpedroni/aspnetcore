@@ -5,7 +5,7 @@ import 'firebase/auth';
 
 @Injectable()
 export class AuthService {
-  token = '';
+  token: string;
 
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -42,6 +42,6 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    return this.getToken() !== '';
+    return this.token != null;
   }
 }
