@@ -1,3 +1,4 @@
+import { RecipeRoutingModule } from './recipe-routing.module';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -8,6 +9,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { AppRoutingModule } from '../app.routing.module';
 
 
 @NgModule({
@@ -19,11 +21,12 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
   ],
   providers: [
     CommonModule, // give access to some providers shared
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecipeRoutingModule
   ],
 })
 export class RecipeModule { }
