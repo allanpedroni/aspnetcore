@@ -5,7 +5,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
 const appRoutes: Routes = [
-  {path: '', component: RecipeStartComponent},
+  { path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'shopping-list', component: ShoppingListComponent},
 ];
 
