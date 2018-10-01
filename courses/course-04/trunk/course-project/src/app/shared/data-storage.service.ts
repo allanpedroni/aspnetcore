@@ -17,7 +17,7 @@ export class DataStorageService {
   storeRecipes() {
     const token = this.authService.getToken();
 
-    // return this.httpClient.put(this.url + '?auth=' + token, this.recipeService.getRecipes());
+    return this.httpClient.put(this.url + '?auth=' + token, this.recipeService.getRecipes());
     // return this.httpClient.put(
     //   this.url,
     //   this.recipeService.getRecipes(),
@@ -25,12 +25,12 @@ export class DataStorageService {
     //     observe: 'body',
     //     params: new HttpParams().set('auth', token)
     //   });
-    const req = new HttpRequest('PUT', this.url, this.recipeService.getRecipes(), 
-      {
-        reportProgress: true,
-        params: new HttpParams().set('auth', token)
-      });
-      return this.httpClient.request(req);
+    // const req = new HttpRequest('PUT', this.url, this.recipeService.getRecipes(),
+    //   {
+    //     reportProgress: true,
+    //     params: new HttpParams().set('auth', token)
+    //   });
+    //   return this.httpClient.request(req);
   }
 
   getRecipes() {
