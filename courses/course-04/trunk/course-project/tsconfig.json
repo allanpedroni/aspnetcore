@@ -8,13 +8,12 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2016",
+    "downlevelIteration": true,
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "es2017",
-      "dom"
-    ]
-  }
+    "lib": ["es2017", "dom", "dom.iterable", "scripthost"]
+  },
+  "exclude": ["node_modules"]
 }
