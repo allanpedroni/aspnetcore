@@ -8,7 +8,7 @@ export interface AppState {
 export interface State {
   ingredients: Ingredient[];
   editedIngredient: Ingredient;
-  editedINgredientIndex: number;
+    editedINgredientIndex: number;
 }
 
 const initialState: State = {
@@ -58,6 +58,12 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
         ...state,
         editedIngredient: editedIngredient,
         editedINgredientIndex: action.payload
+      };
+    case ShoppingListActions.STOP_EDIT:
+      return {
+        ...state,
+        editedIngredient: null,
+        editedINgredientIndex: -1
       };
     default:
       return state;
