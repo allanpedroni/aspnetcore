@@ -14,15 +14,23 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
   switch (action.type) {
     case AuthActions.SIGNIN:
     case AuthActions.SIGNUP:
+      console.log('SIGNUP/IN');
       return {
         ...state,
         authenticated: true,
       };
     case AuthActions.LOGOUT:
+      console.log('LOGOUT');
       return {
         ...state,
         token: null,
         authenticated: false,
+      };
+    case AuthActions.SET_TOKEN:
+      console.log('SET_TOKEN', action);
+      return {
+        ...state,
+        token: action.payload
       };
     default:
       return state;

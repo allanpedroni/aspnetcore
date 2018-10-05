@@ -15,8 +15,7 @@ export class DataStorageService {
     private authService: AuthService) { }
 
   storeRecipes() {
-    const token = this.authService.getToken();
-
+    // const token = this.authService.getToken();
     // return this.httpClient.put(this.url, this.recipeService.getRecipes());
     // return this.httpClient.put(
     //   this.url,
@@ -33,7 +32,7 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
 
     return this.httpClient.get<Recipe[]>(this.url)
       .pipe(map(
