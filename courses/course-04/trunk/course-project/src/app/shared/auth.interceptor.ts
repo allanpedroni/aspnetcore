@@ -15,8 +15,8 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('Interceptor working fine!', req);
     return this.store.select('auth')
-      .pipe(take(1))
       .pipe(
+        take(1),
         switchMap(
           (authState: fromAuth.State) => {
             console.log('authState.token', authState.token);
