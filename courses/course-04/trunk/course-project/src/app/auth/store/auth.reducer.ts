@@ -29,7 +29,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
     case AuthActions.SET_TOKEN:
       console.log('SET_TOKEN', action);
       return {
-        ...state,
+        ...state, // leave the state as it is.
         token: action.payload
       };
     default:

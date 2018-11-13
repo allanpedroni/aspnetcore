@@ -19,6 +19,12 @@ export class AuthService {
         (value: firebase.auth.UserCredential) => {
           console.log('then signupUser', value);
           this.store.dispatch(new AuthActions.Signup());
+          firebase.auth().currentUser.getIdToken()
+          .then(
+            (token: string) => {
+              this.store.dispatch(new AuthActions.SetToken(token));
+            }
+          );
         }
       )
       .catch(
@@ -32,7 +38,6 @@ export class AuthService {
         firebase.auth().currentUser.getIdToken()
           .then(
             (token: string) => {
-              // this.token = token;
               this.store.dispatch(new AuthActions.SetToken(token));
             }
           );
