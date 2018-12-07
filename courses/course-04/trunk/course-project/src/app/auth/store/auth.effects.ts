@@ -7,7 +7,6 @@ import { map } from 'rxjs/internal/operators/map';
 import * as firebase from 'firebase';
 import * as AuthActions from './auth.actions';
 
-
 @Injectable()
 export class AuthEffects {
   @Effect()
@@ -27,6 +26,32 @@ export class AuthEffects {
       return  [
         {
           type: AuthActions.SIGNUP
+        },
+        {
+          type: AuthActions.SET_TOKEN,
+          payload: token
+        }
+      ];
+    })
+  );
+
+  @Effect()
+  authSignin = this.actions$.pipe(
+    ofType(AuthActions.TRY_SIGNIN),
+    map((action: AuthActions.TrySignin) => {
+      return action.payload;
+    }),
+    switchMap((authData: {username: string, password: string}) => {
+      return fromPromise(firebase.auth().signInWithEmailAndPassword(authData.username,
+        authData.password));
+    }),
+    switchMap(() => {
+      return fromPromise(firebase.auth().currentUser.getIdToken());
+    }),
+    mergeMap((token: string) => {
+      return  [
+        {
+          type: AuthActions.SIGNIN
         },
         {
           type: AuthActions.SET_TOKEN,
