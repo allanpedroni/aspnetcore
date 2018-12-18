@@ -1,4 +1,4 @@
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Injectable, OnInit } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
@@ -19,16 +19,19 @@ export class AuthGuard implements OnInit, CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log('AuthGuard working fine!');
     return this.store.select('auth')
-      .pipe(map((authState: fromAuth.State) => {
-        if (!authState.authenticated) {
-          this.router.navigate(['/signin'], {
-            queryParams: {
-              return: state.url
-            }
-          });
-          return false;
-        }
-        return true;
-      }));
+      .pipe(
+        take(1),
+        map((authState: fromAuth.State) => {
+          if (!authState.authenticated) {
+            this.router.navigate(['/signin'], {
+              queryParams: {
+                return: state.url
+              }
+            });
+            return false;
+          }
+          return true;
+        })
+      );
   }
 }
