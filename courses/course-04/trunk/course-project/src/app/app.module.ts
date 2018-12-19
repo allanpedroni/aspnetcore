@@ -13,6 +13,8 @@ import { AuthModule } from './auth/auth.module';
 import { reducers } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule  } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { StoreRouterConnectingModule  } from '@ngrx/router-store';
     CoreModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([AuthEffects]),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : [] // StoreDevtoolsModule is set to development environment
   ],
   bootstrap: [AppComponent]
 })

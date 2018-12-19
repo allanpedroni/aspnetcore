@@ -23,6 +23,7 @@
     "@ngrx/effects": "^6.1.2",
     "@ngrx/router-store": "^6.1.2",
     "@ngrx/store": "^6.1.0",
+    "@ngrx/store-devtools": "^6.1.2",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
     "firebase": "^5.5.0",
