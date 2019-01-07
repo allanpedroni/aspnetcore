@@ -36,13 +36,11 @@ export function recipeReducer(state = initialState, action: RecipeActions.Recipe
         ...state,
         recipes: [...action.payload]
       };
-      break;
     case RecipeActions.ADD_RECIPE:
       return {
         ...state,
         recipes: [...state.recipes, action.payload]
       };
-      break;
     case RecipeActions.UPDATE_RECIPE:
       const recipe = state.recipes[action.payload.index];
       const updatedRecipe = {
@@ -57,7 +55,6 @@ export function recipeReducer(state = initialState, action: RecipeActions.Recipe
         ...state,
         recipes: recipes
       };
-      break;
     case RecipeActions.DELETE_RECIPE:
       const oldRecipes = [...state.recipes];
       oldRecipes.splice(action.payload, 1);
@@ -65,7 +62,6 @@ export function recipeReducer(state = initialState, action: RecipeActions.Recipe
         ...state,
         recipes: oldRecipes
       };
-      break;
     default:
       return state;
   }
